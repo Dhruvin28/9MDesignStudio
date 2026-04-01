@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="Nandita - Luxurious 4BHK Residential Project by 9M Design Studio">
+	<meta name="keywords" content="luxury interior, 4BHK, residential design, 9M Design Studio">
+	<meta name="author" content="9M Design Studio">
+	<!-- Page Title -->
+    <title>Nandita – Luxury 4BHK Residence | 9M Design Studio</title>
+	<!-- Favicon Icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.webp">
+	<!-- Google Fonts Css-->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<!-- Bootstrap Css -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!-- SlickNav Css -->
+	<link href="css/slicknav.min.css" rel="stylesheet">
+	<!-- Swiper Css -->
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<!-- Font Awesome Icon Css-->
+	<link href="css/all.min.css" rel="stylesheet" media="screen">
+	<!-- Animated Css -->
+	<link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Mouse Cursor Css File -->
+	<link rel="stylesheet" href="css/mousecursor.css">
+	<!-- Main Custom Css -->
+	<link href="css/custom.css" rel="stylesheet" media="screen">
+
+    <style>
+        /* ── Luxury tag ─────────────────────────── */
+        .luxury-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-color, #192324);
+            color: #c9a96e;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+        .luxury-tag i { font-size: 9px; }
+
+        /* ── Hero image ──────────────────────────── */
+        .nandita-hero-image {
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            max-height: 540px;
+        }
+        .nandita-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── Gallery header ──────────────────────── */
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .gallery-header h2 { margin-bottom: 0; }
+        .gallery-count-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--primary-color, #192324);
+            color: #c9a96e;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .gallery-count-badge i { font-size: 10px; }
+
+        /* Thin gold rule under heading */
+        .gallery-divider {
+            width: 48px;
+            height: 2px;
+            background: #c9a96e;
+            border-radius: 2px;
+            margin: 10px 0 24px;
+        }
+
+        /* ── Masonry columns ─────────────────────── */
+        .nandita-masonry {
+            column-count: 3;
+            column-gap: 10px;
+        }
+        @media (max-width: 991px) {
+            .nandita-masonry { column-count: 2; column-gap: 8px; }
+        }
+        @media (max-width: 480px) {
+            .nandita-masonry { column-count: 1; }
+        }
+
+        /* ── Each masonry item ───────────────────── */
+        .nandita-masonry-item {
+            break-inside: avoid;
+            display: inline-block; /* required for column break */
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            background: #0f1a1b;
+            cursor: pointer;
+        }
+        @media (max-width: 991px) {
+            .nandita-masonry-item { margin-bottom: 8px; }
+        }
+
+        .nandita-masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nandita-masonry-item:hover img {
+            transform: scale(1.07);
+        }
+
+        /* Dark gradient overlay */
+        .nandita-masonry-item .nm-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(15, 26, 27, 0) 40%,
+                rgba(15, 26, 27, 0.72) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .nandita-masonry-item:hover .nm-overlay {
+            opacity: 1;
+        }
+
+        /* Gold accent line at bottom on hover */
+        .nandita-masonry-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c9a96e, #e8d5a3);
+            transition: width 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 0 0 5px 5px;
+        }
+        .nandita-masonry-item:hover::after {
+            width: 100%;
+        }
+
+        /* Zoom icon */
+        .nandita-masonry-item .nm-zoom {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            opacity: 0;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+            width: 52px;
+            height: 52px;
+            border: 2px solid rgba(255,255,255,0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            backdrop-filter: blur(2px);
+            background: rgba(201, 169, 110, 0.18);
+        }
+        .nandita-masonry-item:hover .nm-zoom {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Sidebar stacks below on mobile */
+        @media (max-width: 991px) {
+            .project-single-sidebar { margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader Start -->
+	<div class="preloader">
+		<div class="loading-container">
+			<div class="loading"></div>
+			<div id="loading-icon"><img src="images/logo.webp" alt=""></div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+
+    <!-- Header Start -->
+<header class="main-header">
+		<div class="header-sticky">
+			<nav class="container">
+				<div class="navbar navbar-expand-lg">
+					<!-- Logo Start -->
+					<a class="navbar-brand" href="index.html">
+						<img src="images/logo.png" alt="Logo" height="100px">
+					</a>
+					<!-- Logo End -->
+
+					<!-- Main Menu Start -->
+					<div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
+                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- Header Btn Start -->
+                        <div class="header-btn d-inline-flex">
+                            <a href="contact.html" class="btn-default">get in touch</a>
+                        </div>
+                        <!-- Header Btn End -->
+					</div>
+					<!-- Main Menu End -->
+					<div class="navbar-toggle"></div>
+				</div>
+			</nav>
+			<div class="responsive-menu"></div>
+		</div>
+	</header>
+	<!-- Header End -->
+
+    <!-- Page Header Start -->
+	<div class="page-header parallaxie" style="background-image: url(&quot;http://localhost:8000/images/Nandita/20260327_174807.jpg&quot;); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 72.36px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!-- Page Header Box Start -->
+					<div class="page-header-box">
+						<h1 class="text-anime-style-2" data-cursor="-opaque">Nandita</h1>
+						<nav class="wow fadeInUp">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html">home</a></li>
+								<li class="breadcrumb-item"><a href="projects.html">> projects</a></li>
+								<li class="breadcrumb-item active" aria-current="page">> nandita</li>
+							</ol>
+						</nav>
+					</div>
+					<!-- Page Header Box End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+
+    <!-- Page Project Single Start -->
+    <div class="page-project-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 order-lg-1 order-2">
+                    <!-- Project Sidebar Start -->
+                    <div class="project-single-sidebar">
+                        <!-- Project Detail List Start -->
+                        <div class="project-detail-list wow fadeInUp">
+                            <!-- Project Detail Item Start -->
+                            <div class="project-detail-item">
+                                <div class="icon-box">
+                                    <i class="fa-regular fa-calendar"></i>
+                                </div>
+                                <div class="project-detail-content">
+                                    <h3>project date:</h3>
+                                    <p>march 2026</p>
+                                </div>
+                            </div>
+                            <!-- Project Detail Item End -->
+
+                            <!-- Project Detail Item Start -->
+                            <div class="project-detail-item">
+                                <div class="icon-box">
+                                    <i class="fa-regular fa-building"></i>
+                                </div>
+                                <div class="project-detail-content">
+                                    <h3>project type:</h3>
+                                    <p>luxury 4BHK residence</p>
+                                </div>
+                            </div>
+                            <!-- Project Detail Item End -->
+
+                            <!-- Project Detail Item Start -->
+                            <div class="project-detail-item">
+                                <div class="icon-box">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </div>
+                                <div class="project-detail-content">
+                                    <h3>category:</h3>
+                                    <p>residential interior design</p>
+                                </div>
+                            </div>
+                            <!-- Project Detail Item End -->
+
+                            <!-- Project Detail Item Start -->
+                            <div class="project-detail-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-couch"></i>
+                                </div>
+                                <div class="project-detail-content">
+                                    <h3>scope:</h3>
+                                    <p>full interior — 4 bedrooms, living, kitchen, dining</p>
+                                </div>
+                            </div>
+                            <!-- Project Detail Item End -->
+
+                            <!-- Project Detail Item Start -->
+                            <div class="project-detail-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="project-detail-content">
+                                    <h3>project location:</h3>
+                                    <p>Ahmedabad, Gujarat</p>
+                                </div>
+                            </div>
+                            <!-- Project Detail Item End -->
+                        </div>
+                        <!-- Project Detail List End -->
+
+                        <!-- Sidebar CTA Box Start -->
+                        <div class="sidebar-cta-box wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Sidebar CTA Image Start -->
+                            <div class="sidebar-cta-image">
+                                <div class="image-anime">
+                                    <img src="images/sidebar-cta-img.jpg" alt="">
+                                </div>
+                            </div>
+                            <!-- Sidebar CTA Image End -->
+
+                            <!-- Sidebar CTA Body Start -->
+                            <div class="sidebar-cta-Body">
+                                <!-- Sidebar CTA Content Start -->
+                                <div class="sidebar-cta-content">
+                                    <h3>how can we help</h3>
+                                    <p>If you need any helps, please feel free to contact us.</p>
+                                </div>
+                                <!-- Sidebar CTA Content End -->
+
+                                <!-- Sidebar CTA Contact Start -->
+                                <div class="sidebar-cta-contact">
+                                    <!-- Sidebar CTA Contact Item Start -->
+                                    <div class="sidebar-cta-contact-item">
+                                        <div class="icon-box">
+                                            <img src="images/icon-phone.svg" alt="">
+                                        </div>
+                                        <div class="cta-contact-item-content">
+                                            <p>+91 8200954409</p>
+                                        </div>
+                                    </div>
+                                    <!-- Sidebar CTA Contact Item Start -->
+
+                                    <!-- Sidebar CTA Contact Item Start -->
+                                    <div class="sidebar-cta-contact-item">
+                                        <div class="icon-box">
+                                            <img src="images/icon-mail.svg" alt="">
+                                        </div>
+                                        <div class="cta-contact-item-content">
+                                            <p>miluvshah@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <!-- Sidebar CTA Contact Item Start -->
+                                </div>
+                                <!-- Sidebar CTA Contact End -->
+                            </div>
+                            <!-- Sidebar CTA Body End -->
+                        </div>
+                        <!-- Sidebar CTA Box End -->
+                    </div>
+                    <!-- Project Sidebar End -->
+                </div>
+
+                <div class="col-lg-8 order-lg-2 order-1">
+                    <!-- Project Single Content Start -->
+                    <div class="project-single-content">
+
+                        <!-- Luxury Tag -->
+                        <div class="wow fadeInUp">
+                            <span class="luxury-tag">
+                                <i class="fa-solid fa-star"></i>
+                                luxury residential
+                            </span>
+                        </div>
+
+                        <!-- Project Single Image Start -->
+                        <div class="nandita-hero-image">
+                            <figure class="image-anime reveal">
+                                <img src="images/Nandita/20260327_174634.jpg" alt="Nandita – Luxury 4BHK Residence">
+                            </figure>
+                        </div>
+                        <!-- Project Single Image End -->
+
+                        <!-- Project Entry Start -->
+                        <div class="project-entry">
+                            <!-- Project Information Start -->
+                            <div class="project-info">
+                                <h2 class="text-anime-style-2">Project information</h2>
+                                <p class="wow fadeInUp">The Nandita residence is a stunning testament to refined luxury living — a meticulously designed 4BHK home where every room tells a story of elegance, warmth, and purpose. Spread across a generous floor plan, this project called for a seamless blend of opulence and everyday functionality, crafted to reflect the unique personality of its residents.</p>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">Our team at 9M Design Studio approached every corner of this home with a deliberate eye for detail — from the grand proportions of the living area to the intimate character of each bedroom suite. Rich textures, curated finishes, and bespoke furniture work in harmony to create interiors that feel both aspirational and deeply liveable.</p>
+                            </div>
+                            <!-- Project Information End -->
+
+                            <!-- Project Design Information Start -->
+                            <div class="project-design-info">
+                                <h2 class="text-anime-style-2">Design highlights</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">This luxury 4BHK residence showcases the finest elements of contemporary Indian design — where heritage sensibility meets modern sophistication. Every detail was carefully considered to create a home that stands apart.</p>
+                                <ul class="wow fadeInUp" data-wow-delay="0.4s">
+                                    <li>Grand living and dining spaces with double-height proportions and statement lighting.</li>
+                                    <li>Four luxuriously appointed bedrooms, each with a distinct character and dedicated wardrobe design.</li>
+                                    <li>A modular kitchen that balances premium aesthetics with high-performance utility.</li>
+                                    <li>Bespoke joinery and millwork with premium veneers, lacquered finishes, and brass hardware accents.</li>
+                                    <li>A rich material palette — marble flooring, textured wall panels, velvet upholstery, and natural stone surfaces.</li>
+                                    <li>Layered ambient, task, and accent lighting to set the perfect mood across all spaces.</li>
+                                    <li>Seamless indoor-outdoor transition with thoughtfully curated décor and greenery zones.</li>
+                                </ul>
+                            </div>
+                            <!-- Project Design Information End -->
+
+                            <!-- Project Gallery Start -->
+                            <div class="project-gallery gallery-items">
+
+                                <!-- Gallery Header -->
+                                <div class="gallery-header wow fadeInUp">
+                                    <h2 class="text-anime-style-2">Project gallery</h2>
+                                    <span class="gallery-count-badge">
+                                        <i class="fa-solid fa-images"></i> 67 photos
+                                    </span>
+                                </div>
+                                <div class="gallery-divider wow fadeInUp"></div>
+
+                                <!-- Masonry Grid Start -->
+                                <div class="nandita-masonry">
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174634.jpg">
+                                            <img src="images/Nandita/20260327_174634.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2239.JPG">
+                                            <img src="images/Nandita/_DRP2239.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2242.JPG">
+                                            <img src="images/Nandita/_DRP2242.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2243.JPG">
+                                            <img src="images/Nandita/_DRP2243.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2244.JPG">
+                                            <img src="images/Nandita/_DRP2244.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2245.JPG">
+                                            <img src="images/Nandita/_DRP2245.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2252.JPG">
+                                            <img src="images/Nandita/_DRP2252.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2253.JPG">
+                                            <img src="images/Nandita/_DRP2253.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2256.JPG">
+                                            <img src="images/Nandita/_DRP2256.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2257.JPG">
+                                            <img src="images/Nandita/_DRP2257.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2258.JPG">
+                                            <img src="images/Nandita/_DRP2258.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2259.JPG">
+                                            <img src="images/Nandita/_DRP2259.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2263.JPG">
+                                            <img src="images/Nandita/_DRP2263.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2265.JPG">
+                                            <img src="images/Nandita/_DRP2265.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2266.JPG">
+                                            <img src="images/Nandita/_DRP2266.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2267.JPG">
+                                            <img src="images/Nandita/_DRP2267.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2269.JPG">
+                                            <img src="images/Nandita/_DRP2269.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2273.JPG">
+                                            <img src="images/Nandita/_DRP2273.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2274.JPG">
+                                            <img src="images/Nandita/_DRP2274.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2275.JPG">
+                                            <img src="images/Nandita/_DRP2275.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2276.JPG">
+                                            <img src="images/Nandita/_DRP2276.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2280.JPG">
+                                            <img src="images/Nandita/_DRP2280.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2281.JPG">
+                                            <img src="images/Nandita/_DRP2281.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2282.JPG">
+                                            <img src="images/Nandita/_DRP2282.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2283.JPG">
+                                            <img src="images/Nandita/_DRP2283.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2284.JPG">
+                                            <img src="images/Nandita/_DRP2284.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2287.JPG">
+                                            <img src="images/Nandita/_DRP2287.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2288.JPG">
+                                            <img src="images/Nandita/_DRP2288.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2290.JPG">
+                                            <img src="images/Nandita/_DRP2290.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2292.JPG">
+                                            <img src="images/Nandita/_DRP2292.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2294.JPG">
+                                            <img src="images/Nandita/_DRP2294.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2295.JPG">
+                                            <img src="images/Nandita/_DRP2295.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2296.JPG">
+                                            <img src="images/Nandita/_DRP2296.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2297.JPG">
+                                            <img src="images/Nandita/_DRP2297.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2299.JPG">
+                                            <img src="images/Nandita/_DRP2299.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2300.JPG">
+                                            <img src="images/Nandita/_DRP2300.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2301.JPG">
+                                            <img src="images/Nandita/_DRP2301.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2303.JPG">
+                                            <img src="images/Nandita/_DRP2303.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2304.JPG">
+                                            <img src="images/Nandita/_DRP2304.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/_DRP2307.JPG">
+                                            <img src="images/Nandita/_DRP2307.JPG" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_170527.jpg">
+                                            <img src="images/Nandita/20260327_170527.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_170608.jpg">
+                                            <img src="images/Nandita/20260327_170608.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_170725.jpg">
+                                            <img src="images/Nandita/20260327_170725.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_170737.jpg">
+                                            <img src="images/Nandita/20260327_170737.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_170801.jpg">
+                                            <img src="images/Nandita/20260327_170801.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_173452.jpg">
+                                            <img src="images/Nandita/20260327_173452.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_173504.jpg">
+                                            <img src="images/Nandita/20260327_173504.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174253.jpg">
+                                            <img src="images/Nandita/20260327_174253.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174346.jpg">
+                                            <img src="images/Nandita/20260327_174346.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174354.jpg">
+                                            <img src="images/Nandita/20260327_174354.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174513.jpg">
+                                            <img src="images/Nandita/20260327_174513.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174602.jpg">
+                                            <img src="images/Nandita/20260327_174602.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174634.jpg">
+                                            <img src="images/Nandita/20260327_174634.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174701.jpg">
+                                            <img src="images/Nandita/20260327_174701.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174807.jpg">
+                                            <img src="images/Nandita/20260327_174807.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_174929.jpg">
+                                            <img src="images/Nandita/20260327_174929.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182021.jpg">
+                                            <img src="images/Nandita/20260327_182021.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182054.jpg">
+                                            <img src="images/Nandita/20260327_182054.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182119.jpg">
+                                            <img src="images/Nandita/20260327_182119.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182144.jpg">
+                                            <img src="images/Nandita/20260327_182144.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182217.jpg">
+                                            <img src="images/Nandita/20260327_182217.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_182232.jpg">
+                                            <img src="images/Nandita/20260327_182232.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_183421.jpg">
+                                            <img src="images/Nandita/20260327_183421.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_183925.jpg">
+                                            <img src="images/Nandita/20260327_183925.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_184212.jpg">
+                                            <img src="images/Nandita/20260327_184212.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_184256.jpg">
+                                            <img src="images/Nandita/20260327_184256.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="nandita-masonry-item" data-cursor-text="View">
+                                        <a href="images/Nandita/20260327_184321.jpg">
+                                            <img src="images/Nandita/20260327_184321.jpg" alt="Nandita Residence">
+                                            <div class="nm-overlay"></div>
+                                            <div class="nm-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- Masonry Grid End -->
+                            </div>
+                            <!-- Project Gallery End -->
+
+                        </div>
+                        <!-- Project Entry End -->
+                    </div>
+                    <!-- Project Single Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Project Single End -->
+
+    <!-- Footer Start -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Footer Header Start -->
+                    <div class="footer-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="footer-logo">
+                                    <img src="images/logo.webp" alt="" height="200px">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer-social-links">
+                                    <div class="footer-social-link-title">
+                                        <h3>follow our social</h3>
+                                    </div>
+                                    <ul>
+                                        <li><a href="https://www.instagram.com/9mdesignstudio/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Header End -->
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h3>information</h3>
+                        <ul>
+                            <li><a href="about.html">about our company</a></li>
+                            <li><a href="services.html">view our service</a></li>
+                            <li><a href="projects.html">our latest projects</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h3>portfolio</h3>
+                        <ul>
+                            <li><a href="project-nandita.html">nandita – luxury 4bhk</a></li>
+                            <li><a href="project-single.html">luxury home design</a></li>
+                            <li><a href="project-single.html">residential interior design</a></li>
+                            <li><a href="project-single.html">commercial space design</a></li>
+                            <li><a href="project-single.html">renovation and restoration design</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-contact-box footer-links">
+                        <h3>contact us</h3>
+                        <div class="footer-contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <div class="footer-contact-content"><p>+91 8200954409</p></div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="footer-contact-content"><p>miluvshah@gmail.com</p></div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="footer-contact-content"><p>Ahmedabad, Gujarat, 380015</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-copyright-text">
+                            <p>Copyright © 2025 All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Validator js file -->
+    <script src="js/validator.min.js"></script>
+    <!-- SlickNav js file -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Swiper js file -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Counter js file -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Isotop js file -->
+	<script src="js/isotope.min.js"></script>
+    <!-- Magnific js file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <!-- Parallax js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- MagicCursor js file -->
+    <script src="js/gsap.min.js"></script>
+    <script src="js/magiccursor.js"></script>
+    <!-- Text Effect js file -->
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- YTPlayer js File -->
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <!-- Wow js file -->
+    <script src="js/wow.min.js"></script>
+    <!-- Main Custom js file -->
+    <script src="js/function.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r \"project\" d:/Code/Personal/9MDesignStudio/*.html)",
+      "Bash(ls -1 d:/Code/Personal/9MDesignStudio/*.html)",
+      "Bash(sed -i 's/<div class=\"nandita-gallery-item wow fadeInUp\" data-wow-delay=\"[^\"]*\" data-cursor-text=\"View\">/<div class=\"nandita-masonry-item\" data-cursor-text=\"View\">/g' project-nandita.html)",
+      "Bash(sed -i 's/ class=\"nandita-lightbox\"//g' project-nandita.html)",
+      "Bash(sed -i 's|<div class=\"gallery-overlay\"><div class=\"zoom-icon\"><i class=\"fa-solid fa-magnifying-glass-plus\"></i></div></div>|<div class=\"nm-overlay\"></div>\\\\n                                            <div class=\"nm-zoom\"><i class=\"fa-solid fa-magnifying-glass-plus\"></i></div>|g' project-nandita.html)",
+      "Bash(sed -i 's/<!-- Full Photo Grid End -->/<!-- Masonry Grid End -->/g' project-nandita.html)"
+    ]
+  }
+}
