@@ -3615,6 +3615,19 @@ header.main-header .header-sticky.active .navbar{
 		margin: 0;
 	}
 
+	.main-menu ul li a{
+		white-space: nowrap;
+	}
+
+	.main-menu .nav-menu-wrapper{
+		margin-left: 20px;
+	}
+
+	.header-btn .btn-default{
+		padding: 15px 40px 15px 16px;
+		font-size: 15px;
+	}
+
 	.our-testimonial-content{
 		padding: 50px 20px;
 	}
