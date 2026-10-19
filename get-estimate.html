@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="Get an instant indicative interior design cost estimate for your home in Ahmedabad. Answer a few quick questions about your flat or bungalow and 9M Design Studio will share a price range and free consultation.">
+	<meta name="description" content="Get an instant indicative interior design cost estimate for your home in Ahmedabad. Answer a few quick questions about your flat or bungalow and 9M Design Studio will email you a detailed estimate and book a free consultation.">
 	<meta name="keywords" content="interior cost calculator Ahmedabad, home interior estimate, 2BHK interior cost Ahmedabad, 3BHK interior cost, modular kitchen price Ahmedabad, 9M Design Studio estimate">
 	<meta name="author" content="9M Design Studio">
 	<meta name="robots" content="index, follow">
@@ -16,7 +16,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="9M Design Studio">
 	<meta property="og:title" content="Get Your Interior Estimate | 9M Design Studio Ahmedabad">
-	<meta property="og:description" content="Answer a few questions and get an instant indicative price range for your home interiors in Ahmedabad.">
+	<meta property="og:description" content="Answer a few questions and get a detailed interior estimate for your home in Ahmedabad, straight to your inbox.">
 	<meta property="og:url" content="https://9mdesignstudio.com/get-estimate.html">
 	<meta property="og:image" content="https://9mdesignstudio.com/images/contact-us-image.jpg">
 	<meta name="twitter:card" content="summary_large_image">
@@ -124,14 +124,14 @@
                 <div class="section-title">
                     <h3 class="wow fadeInUp">interior cost calculator</h3>
                     <h2 class="text-anime-style-2" data-cursor="-opaque">Know your interior budget <span>in 2 minutes</span></h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s">Answer a few quick questions about your home and get an indicative price range instantly. No login, no obligation. A 9M designer will refine it with you on a free consultation.</p>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s">Answer a few quick questions about your home and we will email you a detailed estimate with a full cost breakdown. No login, no obligation. A 9M designer will refine it with you on a free consultation.</p>
                 </div>
                 <!-- Section Title End -->
 
                 <!-- Progress Start -->
                 <div class="est-progress" aria-live="polite">
                     <div class="est-progress-meta">
-                        <span id="estProgressStep">Step 1 of 7</span>
+                        <span id="estProgressStep">Step 1 of 6</span>
                         <strong id="estProgressLabel">Property</strong>
                     </div>
                     <div class="est-progress-track"><div class="est-progress-bar" id="estProgressBar"></div></div>
@@ -141,8 +141,7 @@
                         <li>Rooms</li>
                         <li>Package</li>
                         <li>Extras</li>
-                        <li>Estimate</li>
-                        <li>Contact</li>
+                        <li>Get estimate</li>
                     </ul>
                 </div>
                 <!-- Progress End -->
@@ -309,57 +308,22 @@
                                 </fieldset>
                             </section>
 
-                            <!-- Step 6: Estimate -->
-                            <section class="est-step" data-step="estimate">
-                                <div class="est-result-head">
-                                    <span class="est-badge">Indicative estimate</span>
-                                    <h3 class="est-label" style="font-size:16px;font-weight:500;color:var(--accent-color);">Your interiors are likely to cost</h3>
-                                    <div class="est-result-range" id="estRange" aria-live="polite"></div>
-                                    <p class="est-result-sub" id="estRangeLakh"></p>
+                            <!-- Step 6: Contact (estimate is emailed, never shown on screen) -->
+                            <section class="est-step" data-step="contact">
+                                <div class="est-review">
+                                    <span class="est-badge">Your estimate is ready</span>
+                                    <p>We have prepared a detailed estimate with a full cost breakdown for:</p>
                                     <div class="est-summary-chips" id="estChips"></div>
-                                    <p class="est-result-sub" style="margin-top:14px;">
+                                    <p class="est-result-sub">
                                         <a href="#" class="est-link" data-goto="property">Edit property</a> &nbsp;·&nbsp;
                                         <a href="#" class="est-link" data-goto="rooms">Edit rooms</a> &nbsp;·&nbsp;
                                         <a href="#" class="est-link" data-goto="package">Edit package</a> &nbsp;·&nbsp;
                                         <a href="#" class="est-link" data-goto="extras">Edit extras</a>
                                     </p>
                                 </div>
-
-                                <table class="est-breakdown" id="estBreakdown">
-                                    <thead><tr><th>Scope of work</th><th>Range</th></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot><tr><td>Total (excluding GST)</td><td></td></tr></tfoot>
-                                </table>
-
-                                <div class="est-notes">
-                                    <div>
-                                        <h4>What's included</h4>
-                                        <ul class="est-inclusions" id="estInclusions"></ul>
-                                    </div>
-                                    <div>
-                                        <h4>Not included</h4>
-                                        <ul class="est-exclusions" id="estExclusions"></ul>
-                                    </div>
-                                </div>
-                                <div class="est-notes" style="grid-template-columns:1fr;">
-                                    <div>
-                                        <h4>Assumptions</h4>
-                                        <ul class="est-assumptions" id="estAssumptions"></ul>
-                                    </div>
-                                </div>
-
-                                <p class="est-disclaimer">This is a preliminary estimate generated from your answers, not a binding quotation. The final price depends on site measurement, material selection and detailed drawings. <span id="estVersion"></span></p>
-                            </section>
-
-                            <!-- Step 7: Contact -->
-                            <section class="est-step" data-step="contact">
-                                <div class="est-mini-estimate">
-                                    <div><small>Your indicative estimate</small><strong id="estMiniRange"></strong></div>
-                                    <a href="#" class="est-link" data-goto="estimate" style="color:#fff;">View breakdown</a>
-                                </div>
                                 <fieldset>
-                                    <legend>Where should we send your estimate?</legend>
-                                    <p class="est-hint">A 9M designer will call to walk you through it and book a free consultation. Your details are never shared.</p>
+                                    <legend>Where should we email your estimate?</legend>
+                                    <p class="est-hint">We will email your detailed estimate right away, and a 9M designer will call to walk you through it and book a free consultation. Your details are never shared.</p>
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <label class="est-field-label" for="estName">Your name *</label>
@@ -372,7 +336,7 @@
                                             <div class="est-field-error" id="estPhoneError"></div>
                                         </div>
                                         <div class="col-md-12 mb-4">
-                                            <label class="est-field-label" for="estEmail">Email (optional)</label>
+                                            <label class="est-field-label" for="estEmail">Email address *</label>
                                             <input type="email" id="estEmail" name="email" class="form-control" placeholder="you@example.com" autocomplete="email" maxlength="120">
                                             <div class="est-field-error" id="estEmailError"></div>
                                         </div>
@@ -393,10 +357,11 @@
                             <div class="icon-box"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                             <h2>Thank you, <span id="estDoneName"></span>!</h2>
                             <span class="est-lead-id" id="estDoneLeadId"></span>
-                            <p>Your indicative estimate is <strong id="estDoneRange"></strong>. Send it to us on WhatsApp or email so our designer has your details, and we will call you within one working day.</p>
+                            <p id="estDoneSent">We have emailed your detailed estimate to <strong id="estDoneEmail"></strong>. Please check your inbox (and the spam folder, just in case). Our designer will call you within one working day.</p>
+                            <p id="estDoneNotSent" hidden>We have received your request, but could not deliver the estimate to your inbox. Our designer will share it with you and call you within one working day.</p>
                             <div class="est-done-actions">
-                                <a href="#" id="estWhatsApp" class="btn-default btn-whatsapp" target="_blank" rel="noopener">send on whatsapp</a>
-                                <a href="#" id="estMail" class="btn-default btn-highlighted">send by email</a>
+                                <a href="#" id="estWhatsApp" class="btn-default btn-whatsapp" target="_blank" rel="noopener">chat on whatsapp</a>
+                                <a href="tel:+918200954409" class="btn-default btn-highlighted">call us</a>
                             </div>
                             <div class="est-done-steps">
                                 <h4>What happens next</h4>
@@ -575,6 +540,10 @@
     <script src="js/wow.min.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+    <script src="js/email-config.js"></script>
+    <script src="js/mailer.js"></script>
     <!-- Estimator js file -->
     <script src="js/estimator.js"></script>
 </body>

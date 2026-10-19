@@ -781,6 +781,30 @@
 	font-weight: 700;
 }
 
+/* Review (contact step) */
+.est-review{
+	text-align: center;
+	background: var(--secondery-color);
+	padding: 26px 20px 18px;
+	margin-bottom: 30px;
+}
+
+.est-review p{
+	margin-bottom: 0;
+}
+
+.est-review .est-summary-chips{
+	margin-top: 14px;
+}
+
+.est-review .est-summary-chips span{
+	background: var(--white-color);
+}
+
+.est-review .est-result-sub{
+	margin-top: 14px;
+}
+
 /* Confirmation */
 .est-done{
 	text-align: center;

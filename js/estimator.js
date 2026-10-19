@@ -14,7 +14,7 @@
 
 	var BUSINESS = {
 		whatsappNumber: '918200954409',          // country code + number, digits only
-		email: 'miluvshah@gmail.com',
+		email: (window.NM_EMAIL_CONFIG && window.NM_EMAIL_CONFIG.studioEmail) || 'miloni9mdesignstudio@gmail.com',
 		phoneDisplay: '+91 8200954409'
 	};
 
@@ -24,11 +24,12 @@
 		uncertainty: { low: 0.9, high: 1.2 },
 		minimumProjectValue: 250000,
 
-		/* multipliers applied to carpentry / modular items */
+		/* multipliers applied to carpentry / modular items.
+		   budgetUplift (optional) raises the final low / high range, e.g. 1.2 = +20% */
 		packages: {
 			essential: { label: 'Essential', material: 1.0,  finish: 1.0 },
 			premium:   { label: 'Premium',   material: 1.35, finish: 1.15 },
-			luxury:    { label: 'Luxury',    material: 1.8,  finish: 1.3 }
+			luxury:    { label: 'Luxury',    material: 1.8,  finish: 1.3, budgetUplift: { low: 1.2, high: 1.4 } }
 		},
 
 		/* city multipliers apply ONLY to labour / logistics share, not to materials */
@@ -126,11 +127,10 @@
 		{ id: 'rooms',    label: 'Rooms' },
 		{ id: 'package',  label: 'Package' },
 		{ id: 'extras',   label: 'Extras' },
-		{ id: 'estimate', label: 'Estimate' },
-		{ id: 'contact',  label: 'Contact' }
+		{ id: 'contact',  label: 'Get estimate' }
 	];
 
-	var STORAGE_KEY = 'nm_estimator_draft_v1';
+	var STORAGE_KEY = 'nm_estimator_draft_v2';
 	var ATTRIB_KEY  = 'nm_estimator_attribution';
 	var DRAFT_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
@@ -328,11 +328,15 @@
 			subtotal = PRICING.minimumProjectValue;
 		}
 
-		var low = roundTo(subtotal * PRICING.uncertainty.low, 5000);
-		var high = roundTo(subtotal * PRICING.uncertainty.high, 5000);
+		var uplift = pkg.budgetUplift || { low: 1, high: 1 };
+		var lowFactor = PRICING.uncertainty.low * uplift.low;
+		var highFactor = PRICING.uncertainty.high * uplift.high;
+		var low = roundTo(subtotal * lowFactor, 5000);
+		var high = roundTo(subtotal * highFactor, 5000);
 
 		if (areaFactor !== 1) assumptions.push('Entered ' + PRICING.areaType[s.areaType].label.toLowerCase() + ' converted to about ' + carpetArea.toLocaleString('en-IN') + ' sq ft carpet area for area-based items.');
 		assumptions.push(pkg.label + ' package materials and finishes; final brand selection may change the price.');
+		if (pkg.budgetUplift) assumptions.push(pkg.label + ' range includes an allowance for bespoke detailing, imported materials and premium hardware.');
 		if (s.projectType === 'renovation') assumptions.push('Renovation allowance included for dismantling and making good.');
 		if (city.labour !== 1) assumptions.push('Labour and logistics adjusted for ' + city.label + '.');
 		if (belowMinimum) assumptions.push('Estimate raised to our minimum project value of ' + formatINR(PRICING.minimumProjectValue) + '.');
@@ -351,7 +355,7 @@
 			low: low,
 			high: high,
 			lines: lines.map(function (l) {
-				return { label: l.label, detail: l.detail, low: roundTo(l.amount * PRICING.uncertainty.low, 1000), high: roundTo(l.amount * PRICING.uncertainty.high, 1000) };
+				return { label: l.label, detail: l.detail, low: roundTo(l.amount * lowFactor, 1000), high: roundTo(l.amount * highFactor, 1000) };
 			}),
 			assumptions: assumptions,
 			inclusions: PRICING.inclusions,
@@ -486,11 +490,11 @@
 		els.progressStep.textContent = 'Step ' + (index + 1) + ' of ' + STEPS.length;
 		els.progressLabel.textContent = step.label;
 		els.back.hidden = index === 0;
-		els.next.textContent = step.id === 'estimate' ? 'get my estimate & consultation' : (step.id === 'contact' ? 'send my estimate' : 'continue');
+		els.next.textContent = step.id === 'contact' ? 'email my estimate' : 'continue';
+		els.next.disabled = false;
 		hideError();
 
-		if (step.id === 'estimate') renderEstimate();
-		if (step.id === 'contact') renderMiniEstimate();
+		if (step.id === 'contact') renderReview();
 
 		if (focusHeading) {
 			var heading = $('.est-step.is-active legend, .est-step.is-active .est-label, .est-step.is-active h2');
@@ -501,32 +505,23 @@
 		saveDraft();
 	}
 
-	function renderEstimate() {
-		estimate = calculateEstimate(state);
-		$('#estRange').innerHTML = formatINR(estimate.low) + ' <span>–</span> ' + formatINR(estimate.high);
-		$('#estRangeLakh').textContent = '₹' + formatLakh(estimate.low) + ' to ₹' + formatLakh(estimate.high) + ' · excluding GST';
-
-		var chips = [
+	function summaryChips() {
+		return [
 			bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType),
 			PRICING.cities[state.city].label,
 			parseInt(state.areaSqFt, 10).toLocaleString('en-IN') + ' sq ft ' + PRICING.areaType[state.areaType].label.replace(' area', ''),
 			PRICING.packages[state.packageId].label + ' package',
 			PRICING.projectType[state.projectType].label
 		];
+	}
+
+	/* The price is never shown on screen; it is emailed. Show only the selections. */
+	function renderReview() {
+		var roomCount = Object.keys(state.rooms).length;
+		var chips = summaryChips();
+		chips.push(roomCount + ' space' + (roomCount === 1 ? '' : 's'));
+		if (state.extras.length) chips.push(state.extras.length + ' extra' + (state.extras.length === 1 ? '' : 's'));
 		$('#estChips').innerHTML = chips.map(function (c) { return '<span>' + c + '</span>'; }).join('');
-
-		var tbody = $('#estBreakdown tbody');
-		tbody.innerHTML = estimate.lines.map(function (l) {
-			return '<tr><td>' + l.label + '<small>' + l.detail + '</small></td><td>' + formatINR(l.low) + ' – ' + formatINR(l.high) + '</td></tr>';
-		}).join('');
-		$('#estBreakdown tfoot td:last-child').textContent = formatINR(estimate.low) + ' – ' + formatINR(estimate.high);
-
-		$('#estInclusions').innerHTML = estimate.inclusions.map(function (x) { return '<li>' + x + '</li>'; }).join('');
-		$('#estExclusions').innerHTML = estimate.exclusions.map(function (x) { return '<li>' + x + '</li>'; }).join('');
-		$('#estAssumptions').innerHTML = estimate.assumptions.map(function (x) { return '<li>' + x + '</li>'; }).join('');
-		$('#estVersion').textContent = 'Estimate ' + estimate.estimateId + ' · pricing version ' + estimate.pricingVersion;
-
-		track('estimate_generated', { estimate_id: estimate.estimateId, pricing_version: estimate.pricingVersion, value_range_bucket: bucket(estimate.high) });
 	}
 
 	function bucket(n) {
@@ -535,11 +530,6 @@
 		if (n < 2000000) return '10L_20L';
 		if (n < 4000000) return '20L_40L';
 		return 'above_40L';
-	}
-
-	function renderMiniEstimate() {
-		if (!estimate) estimate = calculateEstimate(state);
-		$('#estMiniRange').textContent = formatINR(estimate.low) + ' – ' + formatINR(estimate.high);
 	}
 
 	function labelFor(name, value) {
@@ -642,7 +632,7 @@
 			case 'contact':
 				if (!state.name || state.name.length < 2) { errors.push('Please enter your name.'); fieldError('estName', 'Required'); }
 				if (!normalisePhone(state.phone)) { errors.push('Please enter a valid 10-digit Indian mobile number.'); fieldError('estPhone', 'Valid mobile number required'); }
-				if (state.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(state.email)) { errors.push('Please enter a valid email address or leave it blank.'); fieldError('estEmail', 'Invalid email'); }
+				if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(state.email)) { errors.push('Please enter a valid email address so we can send your estimate.'); fieldError('estEmail', 'Valid email required'); }
 				if (!state.consent) errors.push('Please allow us to contact you about this estimate.');
 				break;
 		}
@@ -650,53 +640,201 @@
 	}
 
 	/* ============================================================
-	   7. LEAD SUBMISSION (WhatsApp + email deep links)
+	   7. LEAD SUBMISSION (EmailJS: estimate to client + inquiry to studio)
 	   ============================================================ */
 
-	function buildLeadMessage(leadId, attribution) {
-		var roomsText = Object.keys(state.rooms).map(function (k) {
+	function roomsList() {
+		return Object.keys(state.rooms).map(function (k) {
 			var r = state.rooms[k];
 			return PRICING.rooms[k].label + (PRICING.rooms[k].countable ? ' x' + r.count : '') + (r.scope === 'partial' ? ' (selected work)' : '');
-		}).join(', ');
-		var extrasText = state.extras.map(function (k) { return PRICING.extras[k].label; }).join(', ') || 'None';
-
-		var lines = [
-			'Hello 9M Design Studio, I would like a consultation for my home interiors.',
-			'',
-			'Lead ID: ' + leadId,
-			'Estimate: ' + formatINR(estimate.low) + ' – ' + formatINR(estimate.high) + ' (' + estimate.pricingVersion + ')',
-			'',
-			'Name: ' + state.name,
-			'Mobile: ' + normalisePhone(state.phone),
-			state.email ? 'Email: ' + state.email : null,
-			'',
-			'Property: ' + bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType) + ', ' + PRICING.cities[state.city].label,
-			'Area: ' + state.areaSqFt + ' sq ft (' + PRICING.areaType[state.areaType].label + ')',
-			'Project: ' + PRICING.projectType[state.projectType].label,
-			'Rooms: ' + roomsText,
-			'Package: ' + PRICING.packages[state.packageId].label,
-			'Extras: ' + extrasText,
-			state.startWindow ? 'Start: ' + state.startWindow : null
-		];
-		if (attribution && attribution.last && attribution.last.utm_source) lines.push('Source: ' + attribution.last.utm_source + (attribution.last.utm_campaign ? ' / ' + attribution.last.utm_campaign : ''));
-		return lines.filter(function (l) { return l !== null; }).join('\n');
+		});
 	}
 
+	function extrasList() {
+		return state.extras.map(function (k) { return PRICING.extras[k].label; });
+	}
+
+	/* Short WhatsApp hand-off. Deliberately carries no price - that goes by email only. */
+	function buildWhatsAppMessage(leadId) {
+		return [
+			'Hello 9M Design Studio, I just requested an interior estimate on your website and would like to book a free consultation.',
+			'',
+			'Reference: ' + leadId,
+			'Name: ' + state.name,
+			'Property: ' + bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType) + ', ' + PRICING.cities[state.city].label
+		].join('\n');
+	}
+
+	function projectSummaryRows() {
+		var e = window.NMMailer.esc;
+		return [
+			['Property', e(bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType))],
+			['City', e(PRICING.cities[state.city].label)],
+			['Area', e(parseInt(state.areaSqFt, 10).toLocaleString('en-IN') + ' sq ft (' + PRICING.areaType[state.areaType].label + ')')],
+			['Project type', e(PRICING.projectType[state.projectType].label)],
+			['Package', e(PRICING.packages[state.packageId].label)],
+			['Spaces', e(roomsList().join(', '))],
+			['Extras', e(extrasList().join(', ') || 'None')],
+			['Preferred start', e(state.startWindow || 'Not sure yet')]
+		];
+	}
+
+	/* The designed estimate body, shared by the client and studio emails */
+	function estimateEmailSections(est) {
+		var M = window.NMMailer, C = M.colors, F = M.font, e = M.esc;
+
+		var hero =
+			'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0 6px;">' +
+				'<tr><td align="center" style="padding:30px 20px;background:' + C.primary + ';">' +
+					'<div style="font-family:' + F + ';font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C9D0CB;">Indicative estimate</div>' +
+					'<div style="margin-top:10px;font-family:' + F + ';font-size:30px;line-height:1.25;font-weight:700;color:' + C.white + ';">' + e(formatINR(est.low)) + ' &ndash; ' + e(formatINR(est.high)) + '</div>' +
+					'<div style="margin-top:8px;font-family:' + F + ';font-size:14px;color:#C9D0CB;">&#8377;' + e(formatLakh(est.low)) + ' to &#8377;' + e(formatLakh(est.high)) + ' &middot; excluding GST</div>' +
+				'</td></tr>' +
+			'</table>';
+
+		var cell = 'font-family:' + F + ';font-size:14px;border-bottom:1px solid ' + C.divider + ';vertical-align:top;';
+		var breakdown =
+			'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">' +
+				'<tr>' +
+					'<td style="' + cell + 'padding:10px 12px;background:' + C.soft + ';font-weight:700;color:' + C.primary + ';">Scope of work</td>' +
+					'<td align="right" style="' + cell + 'padding:10px 12px;background:' + C.soft + ';font-weight:700;color:' + C.primary + ';white-space:nowrap;">Range</td>' +
+				'</tr>' +
+				est.lines.map(function (l) {
+					return '<tr>' +
+						'<td style="' + cell + 'padding:12px;color:' + C.primary + ';font-weight:600;">' + e(l.label) +
+							'<div style="margin-top:3px;font-size:12px;font-weight:400;line-height:1.5;color:' + C.muted + ';">' + e(l.detail) + '</div></td>' +
+						'<td align="right" style="' + cell + 'padding:12px;color:' + C.text + ';white-space:nowrap;">' + e(formatINR(l.low)) + ' &ndash; ' + e(formatINR(l.high)) + '</td>' +
+					'</tr>';
+				}).join('') +
+				'<tr>' +
+					'<td style="padding:14px 12px;background:' + C.accent + ';font-family:' + F + ';font-size:15px;font-weight:700;color:' + C.white + ';">Total (excluding GST)</td>' +
+					'<td align="right" style="padding:14px 12px;background:' + C.accent + ';font-family:' + F + ';font-size:15px;font-weight:700;color:' + C.white + ';white-space:nowrap;">' + e(formatINR(est.low)) + ' &ndash; ' + e(formatINR(est.high)) + '</td>' +
+				'</tr>' +
+			'</table>';
+
+		return hero +
+			M.heading('Your project') + M.keyValue(projectSummaryRows()) +
+			M.heading('Cost breakdown') + breakdown +
+			M.heading('What is included') + M.list(est.inclusions) +
+			M.heading('Not included') + M.list(est.exclusions, '&ndash;') +
+			M.heading('Assumptions') + M.list(est.assumptions, '&bull;');
+	}
+
+	function buildClientEmail(est, leadId, waUrl) {
+		var M = window.NMMailer, e = M.esc;
+		return M.layout({
+			preheader: 'Your indicative interior estimate: ' + formatINR(est.low) + ' - ' + formatINR(est.high) + '. Reference ' + leadId + '.',
+			bodyHtml:
+				M.para('<strong style="font-size:22px;color:' + M.colors.primary + ';">Hi ' + e(state.name.split(' ')[0]) + ', here is your interior estimate</strong>') +
+				M.para('Thank you for using the 9M Design Studio interior cost calculator. Based on your answers, here is an indicative budget for your home along with a detailed breakdown. A 9M designer will call you within one working day to walk you through it.') +
+				M.heading('Your details') +
+				M.keyValue([
+					['Name', e(state.name)],
+					['Mobile', e(normalisePhone(state.phone))],
+					['Email', e(state.email)]
+				]) +
+				M.para('If anything here is incorrect, simply reply to this email.', 'font-size:13px;color:' + M.colors.muted + ';margin-top:10px;') +
+				estimateEmailSections(est) +
+				M.heading('What happens next') +
+				M.list([
+					'Our designer reviews your requirement and calls you to understand your taste and priorities.',
+					'We schedule a free consultation and site visit for measurements.',
+					'You receive a detailed, itemised quotation with 3D visuals.'
+				], '&rarr;') +
+				'<div style="margin:24px 0 8px;">' +
+					M.button(waUrl, 'Book free consultation', true) +
+					M.button('tel:+918200954409', 'Call +91 8200954409') +
+				'</div>' +
+				M.para('This is a preliminary estimate generated from your answers, not a binding quotation. The final price depends on site measurement, material selection and detailed drawings.', 'font-size:12px;color:' + M.colors.muted + ';margin-top:20px;') +
+				M.para('Reference ' + e(leadId) + ' &middot; Estimate ' + e(est.estimateId) + ' &middot; Pricing ' + e(est.pricingVersion), 'font-size:12px;color:' + M.colors.muted + ';'),
+			footerNote: 'You are receiving this because you requested an estimate on 9mdesignstudio.com. Simply reply to this email with any questions.'
+		});
+	}
+
+	function buildStudioEmail(est, leadId, attribution) {
+		var M = window.NMMailer, e = M.esc, C = M.colors;
+		var phone = normalisePhone(state.phone);
+		var source = '';
+		if (attribution && attribution.last) {
+			source = Object.keys(attribution.last).map(function (k) { return k + '=' + attribution.last[k]; }).join(', ');
+		}
+		var link = function (href, text) { return '<a href="' + e(href) + '" style="color:' + C.primary + ';">' + e(text) + '</a>'; };
+		return M.layout({
+			preheader: 'New estimate lead: ' + state.name + ', ' + formatINR(est.low) + ' - ' + formatINR(est.high),
+			bodyHtml:
+				M.para('<strong style="font-size:22px;color:' + C.primary + ';">New estimate lead</strong>') +
+				M.para('Submitted on ' + e(new Date().toLocaleString('en-IN')) + '. The client has been emailed the estimate below. Reply to this email to respond to them directly.') +
+				M.heading('Contact details') +
+				M.keyValue([
+					['Reference', e(leadId)],
+					['Name', e(state.name)],
+					['Mobile', link('tel:' + phone, phone)],
+					['WhatsApp', link('https://wa.me/' + phone.replace(/\D/g, ''), 'Open chat')],
+					['Email', link('mailto:' + state.email, state.email)],
+					['Consent', 'Yes - phone, WhatsApp, email'],
+					['Source', e(source || (attribution && attribution.referrer) || 'Direct')]
+				]) +
+				estimateEmailSections(est) +
+				M.para('Estimate ' + e(est.estimateId) + ' &middot; Pricing ' + e(est.pricingVersion), 'font-size:12px;color:' + C.muted + ';margin-top:20px;')
+		});
+	}
+
+	var submitting = false;
+
 	function submitLead() {
+		if (submitting) return;
+		var M = window.NMMailer;
+		if (!M || !M.isConfigured()) {
+			showError(['Sorry, we could not send your estimate right now. Please call us on ' + BUSINESS.phoneDisplay + ' or try again later.']);
+			return;
+		}
+
 		var leadId = uid('LEAD');
 		var attribution = captureAttribution();
-		var message = buildLeadMessage(leadId, attribution);
+		estimate = calculateEstimate(state);
+		var waUrl = 'https://wa.me/' + BUSINESS.whatsappNumber + '?text=' + encodeURIComponent(buildWhatsAppMessage(leadId));
 
-		var waUrl = 'https://wa.me/' + BUSINESS.whatsappNumber + '?text=' + encodeURIComponent(message);
-		var mailUrl = 'mailto:' + BUSINESS.email + '?subject=' + encodeURIComponent('Interior estimate request ' + leadId + ' - ' + state.name) + '&body=' + encodeURIComponent(message);
+		submitting = true;
+		els.next.disabled = true;
+		els.back.disabled = true;
+		els.next.textContent = 'sending...';
 
+		var clientMail = M.send('client', {
+			to_email: state.email,
+			to_name: state.name,
+			subject: 'Your interior estimate from 9M Design Studio (' + leadId + ')',
+			html_content: buildClientEmail(estimate, leadId, waUrl)
+		});
+		var studioMail = M.send('studio', {
+			subject: 'New estimate lead ' + leadId + ' - ' + state.name + ' - ' + formatINR(estimate.low) + ' to ' + formatINR(estimate.high),
+			reply_to: state.email,
+			html_content: buildStudioEmail(estimate, leadId, attribution)
+		});
+
+		var settle = function (p) { return p.then(function () { return true; }, function (err) { if (window.console) console.error('Estimate email failed', err); return false; }); };
+
+		Promise.all([settle(clientMail), settle(studioMail)]).then(function (res) {
+			submitting = false;
+			els.back.disabled = false;
+			if (!res[0] && !res[1]) {
+				els.next.disabled = false;
+				els.next.textContent = 'email my estimate';
+				showError(['Sorry, we could not send your estimate. Please check your email address and try again, or call us on ' + BUSINESS.phoneDisplay + '.']);
+				return;
+			}
+			track('estimate_generated', { estimate_id: estimate.estimateId, pricing_version: estimate.pricingVersion, value_range_bucket: bucket(estimate.high) });
+			track('lead_submitted', { lead_id: leadId, estimate_id: estimate.estimateId });
+			showDone(leadId, waUrl, res[0]);
+		});
+	}
+
+	function showDone(leadId, waUrl, clientMailed) {
 		$('#estDoneLeadId').textContent = 'Reference: ' + leadId;
 		$('#estDoneName').textContent = state.name.split(' ')[0];
-		$('#estDoneRange').textContent = formatINR(estimate.low) + ' – ' + formatINR(estimate.high);
+		$('#estDoneEmail').textContent = state.email;
+		$('#estDoneSent').hidden = !clientMailed;
+		$('#estDoneNotSent').hidden = clientMailed;
 		$('#estWhatsApp').setAttribute('href', waUrl);
-		$('#estMail').setAttribute('href', mailUrl);
-
-		track('lead_submitted', { lead_id: leadId, estimate_id: estimate.estimateId });
 
 		$('#estWizard').hidden = true;
 		els.resume.hidden = true;
@@ -712,11 +850,6 @@
 		if (h2) { h2.setAttribute('tabindex', '-1'); h2.focus({ preventScroll: true }); }
 		var top = els.card.getBoundingClientRect().top + window.pageYOffset - 120;
 		window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-
-		// Open WhatsApp automatically on mobile for the fastest hand-off
-		if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-			setTimeout(function () { window.open(waUrl, '_blank'); }, 400);
-		}
 	}
 
 	/* ============================================================
