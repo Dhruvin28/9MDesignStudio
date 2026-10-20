@@ -640,7 +640,7 @@
 	}
 
 	/* ============================================================
-	   7. LEAD SUBMISSION (EmailJS: estimate to client + inquiry to studio)
+	   7. LEAD SUBMISSION (email relay: estimate to client + inquiry to studio)
 	   ============================================================ */
 
 	function roomsList() {
@@ -666,117 +666,46 @@
 	}
 
 	function projectSummaryRows() {
-		var e = window.NMMailer.esc;
 		return [
-			['Property', e(bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType))],
-			['City', e(PRICING.cities[state.city].label)],
-			['Area', e(parseInt(state.areaSqFt, 10).toLocaleString('en-IN') + ' sq ft (' + PRICING.areaType[state.areaType].label + ')')],
-			['Project type', e(PRICING.projectType[state.projectType].label)],
-			['Package', e(PRICING.packages[state.packageId].label)],
-			['Spaces', e(roomsList().join(', '))],
-			['Extras', e(extrasList().join(', ') || 'None')],
-			['Preferred start', e(state.startWindow || 'Not sure yet')]
+			['Property', bhkLabel(state.bhk) + ' ' + labelFor('propertyType', state.propertyType)],
+			['City', PRICING.cities[state.city].label],
+			['Area', parseInt(state.areaSqFt, 10).toLocaleString('en-IN') + ' sq ft (' + PRICING.areaType[state.areaType].label + ')'],
+			['Project type', PRICING.projectType[state.projectType].label],
+			['Package', PRICING.packages[state.packageId].label],
+			['Spaces', roomsList().join(', ')],
+			['Extras', extrasList().join(', ') || 'None'],
+			['Preferred start', state.startWindow || 'Not sure yet']
 		];
 	}
 
-	/* The designed estimate body, shared by the client and studio emails */
-	function estimateEmailSections(est) {
-		var M = window.NMMailer, C = M.colors, F = M.font, e = M.esc;
-
-		var hero =
-			'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0 6px;">' +
-				'<tr><td align="center" style="padding:30px 20px;background:' + C.primary + ';">' +
-					'<div style="font-family:' + F + ';font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C9D0CB;">Indicative estimate</div>' +
-					'<div style="margin-top:10px;font-family:' + F + ';font-size:30px;line-height:1.25;font-weight:700;color:' + C.white + ';">' + e(formatINR(est.low)) + ' &ndash; ' + e(formatINR(est.high)) + '</div>' +
-					'<div style="margin-top:8px;font-family:' + F + ';font-size:14px;color:#C9D0CB;">&#8377;' + e(formatLakh(est.low)) + ' to &#8377;' + e(formatLakh(est.high)) + ' &middot; excluding GST</div>' +
-				'</td></tr>' +
-			'</table>';
-
-		var cell = 'font-family:' + F + ';font-size:14px;border-bottom:1px solid ' + C.divider + ';vertical-align:top;';
-		var breakdown =
-			'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">' +
-				'<tr>' +
-					'<td style="' + cell + 'padding:10px 12px;background:' + C.soft + ';font-weight:700;color:' + C.primary + ';">Scope of work</td>' +
-					'<td align="right" style="' + cell + 'padding:10px 12px;background:' + C.soft + ';font-weight:700;color:' + C.primary + ';white-space:nowrap;">Range</td>' +
-				'</tr>' +
-				est.lines.map(function (l) {
-					return '<tr>' +
-						'<td style="' + cell + 'padding:12px;color:' + C.primary + ';font-weight:600;">' + e(l.label) +
-							'<div style="margin-top:3px;font-size:12px;font-weight:400;line-height:1.5;color:' + C.muted + ';">' + e(l.detail) + '</div></td>' +
-						'<td align="right" style="' + cell + 'padding:12px;color:' + C.text + ';white-space:nowrap;">' + e(formatINR(l.low)) + ' &ndash; ' + e(formatINR(l.high)) + '</td>' +
-					'</tr>';
-				}).join('') +
-				'<tr>' +
-					'<td style="padding:14px 12px;background:' + C.accent + ';font-family:' + F + ';font-size:15px;font-weight:700;color:' + C.white + ';">Total (excluding GST)</td>' +
-					'<td align="right" style="padding:14px 12px;background:' + C.accent + ';font-family:' + F + ';font-size:15px;font-weight:700;color:' + C.white + ';white-space:nowrap;">' + e(formatINR(est.low)) + ' &ndash; ' + e(formatINR(est.high)) + '</td>' +
-				'</tr>' +
-			'</table>';
-
-		return hero +
-			M.heading('Your project') + M.keyValue(projectSummaryRows()) +
-			M.heading('Cost breakdown') + breakdown +
-			M.heading('What is included') + M.list(est.inclusions) +
-			M.heading('Not included') + M.list(est.exclusions, '&ndash;') +
-			M.heading('Assumptions') + M.list(est.assumptions, '&bull;');
-	}
-
-	function buildClientEmail(est, leadId, waUrl) {
-		var M = window.NMMailer, e = M.esc;
-		return M.layout({
-			preheader: 'Your indicative interior estimate: ' + formatINR(est.low) + ' - ' + formatINR(est.high) + '. Reference ' + leadId + '.',
-			bodyHtml:
-				M.para('<strong style="font-size:22px;color:' + M.colors.primary + ';">Hi ' + e(state.name.split(' ')[0]) + ', here is your interior estimate</strong>') +
-				M.para('Thank you for using the 9M Design Studio interior cost calculator. Based on your answers, here is an indicative budget for your home along with a detailed breakdown. A 9M designer will call you within one working day to walk you through it.') +
-				M.heading('Your details') +
-				M.keyValue([
-					['Name', e(state.name)],
-					['Mobile', e(normalisePhone(state.phone))],
-					['Email', e(state.email)]
-				]) +
-				M.para('If anything here is incorrect, simply reply to this email.', 'font-size:13px;color:' + M.colors.muted + ';margin-top:10px;') +
-				estimateEmailSections(est) +
-				M.heading('What happens next') +
-				M.list([
-					'Our designer reviews your requirement and calls you to understand your taste and priorities.',
-					'We schedule a free consultation and site visit for measurements.',
-					'You receive a detailed, itemised quotation with 3D visuals.'
-				], '&rarr;') +
-				'<div style="margin:24px 0 8px;">' +
-					M.button(waUrl, 'Book free consultation', true) +
-					M.button('tel:+918200954409', 'Call +91 8200954409') +
-				'</div>' +
-				M.para('This is a preliminary estimate generated from your answers, not a binding quotation. The final price depends on site measurement, material selection and detailed drawings.', 'font-size:12px;color:' + M.colors.muted + ';margin-top:20px;') +
-				M.para('Reference ' + e(leadId) + ' &middot; Estimate ' + e(est.estimateId) + ' &middot; Pricing ' + e(est.pricingVersion), 'font-size:12px;color:' + M.colors.muted + ';'),
-			footerNote: 'You are receiving this because you requested an estimate on 9mdesignstudio.com. Simply reply to this email with any questions.'
-		});
-	}
-
-	function buildStudioEmail(est, leadId, attribution) {
-		var M = window.NMMailer, e = M.esc, C = M.colors;
-		var phone = normalisePhone(state.phone);
+	/* Plain data only: the email relay (email-relay/Code.gs) builds and escapes the emails */
+	function buildPayload(est, leadId, attribution) {
 		var source = '';
 		if (attribution && attribution.last) {
 			source = Object.keys(attribution.last).map(function (k) { return k + '=' + attribution.last[k]; }).join(', ');
 		}
-		var link = function (href, text) { return '<a href="' + e(href) + '" style="color:' + C.primary + ';">' + e(text) + '</a>'; };
-		return M.layout({
-			preheader: 'New estimate lead: ' + state.name + ', ' + formatINR(est.low) + ' - ' + formatINR(est.high),
-			bodyHtml:
-				M.para('<strong style="font-size:22px;color:' + C.primary + ';">New estimate lead</strong>') +
-				M.para('Submitted on ' + e(new Date().toLocaleString('en-IN')) + '. The client has been emailed the estimate below. Reply to this email to respond to them directly.') +
-				M.heading('Contact details') +
-				M.keyValue([
-					['Reference', e(leadId)],
-					['Name', e(state.name)],
-					['Mobile', link('tel:' + phone, phone)],
-					['WhatsApp', link('https://wa.me/' + phone.replace(/\D/g, ''), 'Open chat')],
-					['Email', link('mailto:' + state.email, state.email)],
-					['Consent', 'Yes - phone, WhatsApp, email'],
-					['Source', e(source || (attribution && attribution.referrer) || 'Direct')]
-				]) +
-				estimateEmailSections(est) +
-				M.para('Estimate ' + e(est.estimateId) + ' &middot; Pricing ' + e(est.pricingVersion), 'font-size:12px;color:' + C.muted + ';margin-top:20px;')
-		});
+		return {
+			type: 'estimate',
+			hp: window.NMMailer.honeypot(els.form),
+			lead: {
+				id: leadId,
+				name: state.name,
+				phone: normalisePhone(state.phone),
+				email: state.email,
+				source: source || (attribution && attribution.referrer) || ''
+			},
+			project: projectSummaryRows(),
+			estimate: {
+				id: est.estimateId,
+				pricingVersion: est.pricingVersion,
+				low: est.low,
+				high: est.high,
+				lines: est.lines,
+				inclusions: est.inclusions,
+				exclusions: est.exclusions,
+				assumptions: est.assumptions
+			}
+		};
 	}
 
 	var submitting = false;
@@ -799,32 +728,18 @@
 		els.back.disabled = true;
 		els.next.textContent = 'sending...';
 
-		var clientMail = M.send('client', {
-			to_email: state.email,
-			to_name: state.name,
-			subject: 'Your interior estimate from 9M Design Studio (' + leadId + ')',
-			html_content: buildClientEmail(estimate, leadId, waUrl)
-		});
-		var studioMail = M.send('studio', {
-			subject: 'New estimate lead ' + leadId + ' - ' + state.name + ' - ' + formatINR(estimate.low) + ' to ' + formatINR(estimate.high),
-			reply_to: state.email,
-			html_content: buildStudioEmail(estimate, leadId, attribution)
-		});
-
-		var settle = function (p) { return p.then(function () { return true; }, function (err) { if (window.console) console.error('Estimate email failed', err); return false; }); };
-
-		Promise.all([settle(clientMail), settle(studioMail)]).then(function (res) {
-			submitting = false;
-			els.back.disabled = false;
-			if (!res[0] && !res[1]) {
-				els.next.disabled = false;
-				els.next.textContent = 'email my estimate';
-				showError(['Sorry, we could not send your estimate. Please check your email address and try again, or call us on ' + BUSINESS.phoneDisplay + '.']);
-				return;
-			}
+		M.submit(buildPayload(estimate, leadId, attribution)).then(function (res) {
 			track('estimate_generated', { estimate_id: estimate.estimateId, pricing_version: estimate.pricingVersion, value_range_bucket: bucket(estimate.high) });
 			track('lead_submitted', { lead_id: leadId, estimate_id: estimate.estimateId });
-			showDone(leadId, waUrl, res[0]);
+			showDone(leadId, waUrl, !!res.client);
+		}, function (err) {
+			if (window.console) console.error('Estimate email failed', err);
+			els.next.disabled = false;
+			els.next.textContent = 'email my estimate';
+			showError([err.userMessage || ('Sorry, we could not send your estimate. Please try again, or call us on ' + BUSINESS.phoneDisplay + '.')]);
+		}).then(function () {
+			submitting = false;
+			els.back.disabled = false;
 		});
 	}
 

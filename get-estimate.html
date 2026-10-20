@@ -156,6 +156,7 @@
                     <div class="est-error" id="estError" role="alert" tabindex="-1"></div>
 
                     <form id="estimatorForm" class="est-form" novalidate autocomplete="on">
+                        <div style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
                         <div id="estWizard">
 
                             <!-- Step 1: Property -->
@@ -540,8 +541,7 @@
     <script src="js/wow.min.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+    <!-- Email relay -->
     <script src="js/email-config.js"></script>
     <script src="js/mailer.js"></script>
     <!-- Estimator js file -->

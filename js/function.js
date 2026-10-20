@@ -289,85 +289,36 @@
 	});
 
 	function submitForm(){
-		/* Send via EmailJS: inquiry to the studio + acknowledgement to the visitor */
+		/* Send via the email relay: inquiry to the studio + acknowledgement to the visitor */
 		var M = window.NMMailer;
 		if (!M || !M.isConfigured()) {
 			submitMSG(false, "Sorry, the form is unavailable right now. Please call +91 8200954409.");
 			return;
 		}
 
-		var data = {
-			name: $.trim($("#name").val()),
-			email: $.trim($("#email").val()),
-			phone: $.trim($("#phone").val()),
-			message: $.trim($("#message").val())
-		};
-		var digits = data.phone.replace(/\D/g, "").replace(/^(91|0)(?=[6-9]\d{9}$)/, "");
+		var phone = $.trim($("#phone").val());
+		var digits = phone.replace(/\D/g, "").replace(/^(91|0)(?=[6-9]\d{9}$)/, "");
 		if (!/^[6-9]\d{9}$/.test(digits)) {
 			submitMSG(false, "Please enter a valid 10-digit mobile number.");
 			return;
 		}
-		data.phone = "+91 " + digits;
-		var firstName = data.name.split(" ")[0];
-		var details = M.keyValue([
-			["Name", M.esc(data.name)],
-			["Email", '<a href="mailto:' + M.esc(data.email) + '" style="color:' + M.colors.primary + ';">' + M.esc(data.email) + '</a>'],
-			["Phone", '<a href="tel:' + M.esc(data.phone) + '" style="color:' + M.colors.primary + ';">' + M.esc(data.phone) + '</a>']
-		]);
-		var messageBlock = data.message ? M.quote(M.nl2br(data.message)) : M.para("<em>No message provided.</em>");
-
-		var studioHtml = M.layout({
-			preheader: "New website inquiry from " + data.name,
-			bodyHtml:
-				M.para("<strong style=\"font-size:22px;color:" + M.colors.primary + ";\">New contact inquiry</strong>") +
-				M.para("Submitted from the contact form on " + new Date().toLocaleString("en-IN") + ". Reply to this email to respond directly.") +
-				M.heading("Contact details") + details +
-				M.heading("Message") + messageBlock
-		});
-
-		var clientHtml = M.layout({
-			preheader: "Thanks for reaching out - we will get back to you within one working day.",
-			bodyHtml:
-				M.para("<strong style=\"font-size:22px;color:" + M.colors.primary + ";\">Thank you, " + M.esc(firstName) + "!</strong>") +
-				M.para("We have received your message and a 9M designer will get back to you within one working day. Here is a copy of what you sent us:") +
-				messageBlock +
-				M.heading("Your details") +
-				M.keyValue([
-					["Name", M.esc(data.name)],
-					["Mobile", M.esc(data.phone)],
-					["Email", M.esc(data.email)]
-				]) +
-				M.para("If anything here is incorrect, simply reply to this email.", "font-size:13px;color:" + M.colors.muted + ";margin-top:10px;") +
-				M.heading("While you wait") +
-				M.para("Get an indicative budget for your home in two minutes with our interior cost calculator, or browse our recent work.") +
-				'<div style="margin-top:6px;">' +
-					M.button(M.config.siteUrl + "/get-estimate.html", "Get your estimate", true) +
-					M.button(M.config.siteUrl + "/projects.html", "View projects") +
-				'</div>',
-			footerNote: "You are receiving this because you contacted us through 9mdesignstudio.com."
-		});
 
 		var $btn = $contactform.find("button[type=submit]");
 		$btn.prop("disabled", true).data("label", $btn.text()).text("sending...");
 		submitMSG(true, "");
 
-		M.send("studio", {
-			subject: "New inquiry from " + data.name,
-			reply_to: data.email,
-			html_content: studioHtml
-		}).then(function () {
-			// Acknowledgement is best-effort: the inquiry already reached the studio
-			return M.send("client", {
-				to_email: data.email,
-				to_name: data.name,
-				subject: "We received your message - 9M Design Studio",
-				html_content: clientHtml
-			}).catch(function (err) { if (window.console) console.warn("Acknowledgement email failed", err); });
+		M.submit({
+			type: "contact",
+			hp: M.honeypot($contactform[0]),
+			name: $.trim($("#name").val()),
+			email: $.trim($("#email").val()),
+			phone: digits,
+			message: $.trim($("#message").val())
 		}).then(function () {
 			formSuccess();
 		}, function (err) {
 			if (window.console) console.error("Contact form email failed", err);
-			submitMSG(false, "Sorry, your message could not be sent. Please try again or call +91 8200954409.");
+			submitMSG(false, err.userMessage || "Sorry, your message could not be sent. Please try again or call +91 8200954409.");
 		}).then(function () {
 			$btn.prop("disabled", false).text($btn.data("label"));
 		});
