@@ -26,7 +26,7 @@ const STUDIO_EMAIL = 'miloni9mdesignstudio@gmail.com';
 const SITE_URL = 'https://9mdesignstudio.com';
 const PHONE_DISPLAY = '+91 8200954409';
 const PHONE_TEL = '+918200954409';
-const WHATSAPP_NUMBER = '918200954409';
+const WHATSAPP_NUMBER = '919427553466';
 
 const LIMITS = {
 	perAddressPerHour: 3,   // submissions to the same visitor address

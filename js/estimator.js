@@ -13,7 +13,7 @@
 	   ============================================================ */
 
 	var BUSINESS = {
-		whatsappNumber: '918200954409',          // country code + number, digits only
+		whatsappNumber: '919427553466',          // country code + number, digits only
 		email: (window.NM_EMAIL_CONFIG && window.NM_EMAIL_CONFIG.studioEmail) || 'miloni9mdesignstudio@gmail.com',
 		phoneDisplay: '+91 8200954409'
 	};

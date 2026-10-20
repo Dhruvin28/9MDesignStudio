@@ -6,6 +6,6 @@
 * URL below. The URL is public by design; no password or key is needed here.
 * ---------------------------------------------------------------------------------------- */
 window.NM_EMAIL_CONFIG = {
-	endpoint: 'https://script.google.com/macros/s/AKfycbzZ5UCJEkjWX122Wn_4vPfq1LazH1KSpndfjV3EUlsVAw5rkIz-vc9QSXRnq7NTYux3/exec',
+	endpoint: 'https://script.google.com/macros/s/AKfycbxTwb9F7RUoOM2BLVAM-5SdmLfrNemsGakExiEQC-j6LBkOBtD-OHA0ewHCcHEBZfP1/exec',
 	studioEmail: 'miloni9mdesignstudio@gmail.com'
 };
