@@ -26,13 +26,11 @@
 	<!-- Google Fonts Css-->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 	<!-- Bootstrap Css -->
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<!-- SlickNav Css -->
-	<link href="css/slicknav.min.css" rel="stylesheet">
 	<!-- Swiper Css -->
-	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<!-- Font Awesome Icon Css-->
 	<link href="css/all.min.css" rel="stylesheet" media="screen">
 	<!-- Animated Css -->
@@ -40,503 +38,172 @@
     <!-- Magnific Popup Core Css File -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 	<!-- Mouse Cursor Css File -->
-	<link rel="stylesheet" href="css/mousecursor.css">
 	<!-- Main Custom Css -->
 	<link href="css/custom.css" rel="stylesheet" media="screen">
+	<link href="css/inner.css" rel="stylesheet">
+	<link href="css/components.css" rel="stylesheet">
+	<style>
+		.svc-card { position: relative; display: block; background: #fff; border: 1px solid var(--line-dark); overflow: hidden; transition: transform .5s var(--ease), box-shadow .5s, border-color .4s; }
+		.svc-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(12,29,24,.12); border-color: var(--brass); }
+		.svc-body { position: relative; padding: 26px 28px 30px; }
+		.svc-body .num { font-family: var(--f-mono); font-size: 12px; letter-spacing: .16em; color: var(--brass); display: block; margin-bottom: 14px; }
+		.svc-body h3 { font-family: var(--f-display); font-size: 30px; line-height: 1.1; margin: 0 0 10px; text-transform: capitalize; }
+		.svc-body p { font-size: 15.5px; line-height: 1.65; opacity: .8; padding-right: 54px; }
+		.svc-go { position: absolute; right: 24px; bottom: 26px; width: 44px; height: 44px; background: var(--ink); display: grid; place-items: center; transition: background .4s; }
+		.svc-go img { width: 16px; }
+		.svc-card:hover .svc-go { background: var(--brass); }
+		.ico-box { display: grid; place-items: center; width: 56px; height: 56px; background: var(--brass); margin-bottom: 20px; }
+		.ico-box img { width: 28px; }
+		.why-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+		.why-imgs .ph:nth-child(even) { transform: translateY(40px); }
+		.why-imgs .ph.rv.in:nth-child(even) { transform: translateY(40px); }
+	</style>
 </head>
-<body>
+<body class="inner">
 
-    <!-- Preloader Start -->
-	<div class="preloader">
-		<div class="loading-container">
-			<div class="loading"></div>
-			<div id="loading-icon"><img src="images/logo.webp" alt=""></div>
-		</div>
-	</div>
-	<!-- Preloader End -->
+<div class="progress" id="progress"></div>
 
-    <!-- Header Start -->
-<header class="main-header">
-		<div class="header-sticky">
-			<nav class="container">
-				<div class="navbar navbar-expand-lg">
-					<!-- Logo Start -->
-					<a class="navbar-brand" href="index.html">
-						<img src="images/logo.png" alt="9M Design Studio interior design firm logo" height="100px">
-					</a>
-					<!-- Logo End -->
-
-					<!-- Main Menu Start -->
-					<div class="collapse navbar-collapse main-menu">
-                        <div class="nav-menu-wrapper">
-                            <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>                                
-                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
-                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                                <li class="nav-item"><a class="nav-link" href="get-estimate.html">Get Your Estimate</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>                             
-                            </ul>
-                        </div>
-                        <!-- Header Btn Start -->
-                        <div class="header-btn d-inline-flex">
-                            <a href="get-estimate.html" class="btn-default">get your estimate</a>
-                        </div>
-                        <!-- Header Btn End -->
-					</div>
-					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
-				</div>
+	<!-- Header -->
+	<header class="site-header" id="siteHeader">
+		<div class="wrap">
+			<a class="brand-logo" href="index.html" aria-label="9M Design Studio - home">
+				<img src="images/logo.png" alt="9M Design Studio interior design firm logo">
+			</a>
+			<nav class="nav" id="nav" aria-label="Main">
+				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="about.html">About Us</a>
+				<a class="nav-link active" href="services.html">Services</a>
+				<a class="nav-link" href="projects.html">Projects</a>
+				<a class="nav-link" href="get-estimate.html">Get Your Estimate</a>
+				<a class="nav-link" href="contact.html">Contact Us</a>
 			</nav>
-			<div class="responsive-menu"></div>
+			<a href="get-estimate.html" class="btn btn-light header-cta">Get estimate <span class="arr"></span></a>
+			<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
 		</div>
 	</header>
-	<!-- Header End -->
 
-    <!-- Page Header Start -->
-	<div class="page-header parallaxie">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<!-- Page Header Box Start -->
-					<div class="page-header-box">
-						<h1 class="text-anime-style-2" data-cursor="-opaque">Interior Design Services in Ahmedabad</h1>
-						<nav class="wow fadeInUp">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">> services</li>
-							</ol>
-						</nav>
-					</div>
-					<!-- Page Header Box End -->
-				</div>
+	<!-- Page Hero -->
+	<section class="page-hero has-img" style="background-image:url('images/hero-bg1.jpg')">
+		<div class="wrap">
+			<p class="eyebrow">9M Design Studio</p>
+			<h1>Interior Design Services in Ahmedabad</h1>
+			<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">home</a><span class="sep">/</span><span>services</span></nav>
+		</div>
+	</section>
+
+	<main>
+	<!-- Our Services -->
+	<section class="sec">
+		<div class="wrap">
+			<div class="grid c3">
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-1.jpg" alt="Residential interior design in Ahmedabad"></div>
+					<div class="svc-body"><span class="num">01</span><h3>residential interior design</h3><p>We create personalized Ahmedabad homes that reflect your style, routines and functional needs.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-2.jpg" alt="Commercial interior design in Ahmedabad"></div>
+					<div class="svc-body"><span class="num">02</span><h3>commercial interior design</h3><p>Enhancing offices, studios and commercial environments with professional, functional aesthetics.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-3.jpg" alt="Furniture and decor selection for luxury interiors"></div>
+					<div class="svc-body"><span class="num">03</span><h3>furniture and decor selection</h3><p>Our experts help you choose the perfect furniture and decor complement your style.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-4.jpg" alt="Lighting design for Ahmedabad interiors"></div>
+					<div class="svc-body"><span class="num">04</span><h3>lighting design</h3><p>Enhancing ambiance and functionality with thoughtfully designed lighting solutions.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-5.jpg" alt="Color consultation for residential interiors"></div>
+					<div class="svc-body"><span class="num">05</span><h3>color consultation</h3><p>Choosing palettes that evoke warmth, energy, or calm to match your vision.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
+				<a class="svc-card rv" href="service-single.html">
+					<div class="ph r43"><img src="images/service-6.jpg" alt="3D visualization for interior design projects"></div>
+					<div class="svc-body"><span class="num">06</span><h3>3D visualization</h3><p>Bringing design ideas to life with realistic 3D models before the work begins.</p><span class="svc-go"><img src="images/arrow-white.svg" alt=""></span></div>
+				</a>
 			</div>
 		</div>
-	</div>
-	<!-- Page Header End -->
+	</section>
 
-    <!-- Our Services Section Start -->
-    <div class="page-services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-1.jpg" alt="Residential interior design in Ahmedabad">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
+	<!-- Why Choose Us -->
+	<section class="sec dark">
+		<div class="wrap">
+			<div class="split top">
+				<div>
+					<p class="eyebrow rv">why choose us</p>
+					<h2 class="h2 rv">A behind the scenes look at <em>our studio</em></h2>
+					<p class="lead rv" style="margin-top:24px">From concept to completion, our Ahmedabad team brings your vision to life with planning, collaboration, material detailing and expert craftsmanship.</p>
+					<div class="grid" style="margin-top:36px">
+					<div class="card rv"><span class="ico-box"><img src="images/icon-why-choose-1.svg" alt=""></span><h3>tailored design solutions</h3><p>We provide personalized interior design services that reflect your unique vision and lifestyle.</p></div>
+					<div class="card rv"><span class="ico-box"><img src="images/icon-why-choose-2.svg" alt=""></span><h3>Seamless Project Management</h3><p>We handle the entire design process, from concept to completion, with flawless execution.</p></div>
+					<div class="card rv"><span class="ico-box"><img src="images/icon-why-choose-3.svg" alt=""></span><h3>Client-Centered Collaboration</h3><p>Your input is valued throughout the entire process, ensuring your vision is fully realized.</p></div>
+					</div>
+				</div>
+				<div class="why-imgs">
+					<div class="ph r45 rv"><img src="images/why-choose-img-1.jpg" alt=""></div>
+					<div class="ph r45 rv"><img src="images/why-choose-img-2.jpg" alt=""></div>
+					<div class="ph r45 rv"><img src="images/why-choose-img-3.jpg" alt=""></div>
+					<div class="ph r45 rv"><img src="images/why-choose-img-4.jpg" alt=""></div>
+					</div>
+			</div>
+		</div>
+	</section>
 
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
+	<!-- CTA -->
+	<section class="sec alt cta-band">
+		<div class="wrap">
+			<p class="eyebrow rv">Let's build something</p>
+			<h2 class="h2 rv">Ready to design your <em>space?</em></h2>
+			<div class="cta-btns rv">
+				<a href="get-estimate.html" class="btn btn-solid">Get your estimate <span class="arr"></span></a>
+				<a href="contact.html" class="btn btn-dark">Contact us <span class="arr"></span></a>
+			</div>
+		</div>
+	</section>
+	</main>
 
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">residential interior design</a></h3>
-                            <p>We create personalized Ahmedabad homes that reflect your style, routines and functional needs.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
+	<!-- ============ FOOTER ============ -->
+	<footer class="footer">
+		<div class="wrap">
+			<div class="footer-grid">
+				<div>
+					<a class="brand-logo" href="index.html" aria-label="9M Design Studio"><img src="images/logo.png" alt="9M Design Studio Ahmedabad luxury interior designer"></a>
+					<p>Ahmedabad-based luxury interior design for homes, offices and commercial spaces.</p>
+					<div class="social"><a href="https://www.instagram.com/9mdesignstudio/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div>
+				</div>
+				<div>
+					<h4>Information</h4>
+					<ul>
+						<li><a href="about.html">About our company</a></li>
+						<li><a href="services.html">View our services</a></li>
+						<li><a href="projects.html">Our latest projects</a></li>
+						<li><a href="get-estimate.html">Get your estimate</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4>Portfolio</h4>
+					<ul>
+						<li><a href="project-nandita.html">Luxury 4BHK residence</a></li>
+						<li><a href="project-girdharnagar-bunglow.html">5BHK ultra luxurious bunglow</a></li>
+						<li><a href="project-urban-retreat.html">Modern apartment interiors</a></li>
+						<li><a href="project-corporate-office.html">Commercial office design</a></li>
+						<li><a href="project-luxurious-loft.html">Luxurious loft interiors</a></li>
+						<li><a href="project-minimalist-haven.html">Minimalist home design</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4>Contact us</h4>
+					<ul>
+						<li class="ci"><i class="fa-solid fa-phone"></i><a href="tel:+918200954409">+91 8200954409</a></li>
+						<li class="ci"><i class="fa-solid fa-envelope"></i><a href="mailto:miluvshah@gmail.com">miluvshah@gmail.com</a></li>
+						<li class="ci"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, Gujarat, 380015</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom"><span>Copyright © 2025 All Rights Reserved.</span><span>9M Design Studio · Ahmedabad</span></div>
+		</div>
+	</footer>
 
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-2.jpg" alt="Commercial interior design in Ahmedabad">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
-
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
-
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">commercial interior design</a></h3>
-                            <p>Enhancing offices, studios and commercial environments with professional, functional aesthetics.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp" data-wow-delay="0.2s">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-3.jpg" alt="Furniture and decor selection for luxury interiors">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
-
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
-
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">furniture and decor selection</a></h3>
-                            <p>Our experts help you choose the perfect furniture and decor complement your style.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-4.jpg" alt="Lighting design for Ahmedabad interiors">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
-
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
-
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">lighting design</a></h3>
-                            <p>Enhancing ambiance and functionality with thoughtfully designed lighting solutions.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp" data-wow-delay="0.6s">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-5.jpg" alt="Color consultation for residential interiors">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
-
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
-
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">color consultation</a></h3>
-                            <p>Choosing palettes that evoke warmth, energy, or calm to match your vision.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp" data-wow-delay="0.8s">
-                        <!-- Service Image Start -->
-                        <div class="service-image">
-                            <a href="service-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                    <img src="images/service-6.jpg" alt="3D visualization for interior design projects">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Service Image End -->
-
-                        <!-- Service Button Start -->
-                        <div class="service-btn">
-                            <a href="service-single.html"><img src="images/arrow-white.svg" alt=""></a>
-                        </div>
-                        <!-- Service Button End -->
-
-                        <!-- Service Content Start -->
-                        <div class="service-content">
-                            <h3><a href="service-single.html">3D visualization</a></h3>
-                            <p>Bringing design ideas to life with realistic 3D models before the work begins.</p>
-                        </div>
-                        <!-- Service Content End -->
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Our Services Section End -->
-
-    <!-- Why Choose Us Section Start -->
-    <div class="why-choose-us">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <!-- Why Choose Content Start -->
-                    <div class="why-choose-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">why choose us</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">A behind the scenes look at <span>our studio</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">From concept to completion, our Ahmedabad team brings your vision to life with planning, collaboration, material detailing and expert craftsmanship.</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Why Choose Item List Start -->
-                        <div class="why-choose-item-list">
-                            <!-- Why Choose Item Start -->
-                            <div class="why-choose-item wow fadeInUp" data-wow-delay="0.4s">
-                                <!-- Icon Box Start -->
-                                <div class="icon-box">
-                                    <img src="images/icon-why-choose-1.svg" alt="">
-                                </div>
-                                <!-- Icon Box End -->
-
-                                <!-- Why Choose Item Content Start -->
-                                <div class="why-choose-item-content">
-                                    <h3>tailored design solutions</h3>
-                                    <p>We provide personalized interior design services that reflect your unique vision and lifestyle.</p>
-                                </div>
-                                <!-- Why Choose Item Content End -->
-                            </div>
-                            <!-- Why Choose Item End -->
-                            
-                            <!-- Why Choose Item Start -->
-                            <div class="why-choose-item wow fadeInUp" data-wow-delay="0.6s">
-                                <!-- Icon Box Start -->
-                                <div class="icon-box">
-                                    <img src="images/icon-why-choose-2.svg" alt="">
-                                </div>
-                                <!-- Icon Box End -->
-
-                                <!-- Why Choose Item Content Start -->
-                                <div class="why-choose-item-content">
-                                    <h3>Seamless Project Management</h3>
-                                    <p>We handle the entire design process, from concept to completion, with flawless execution.</p>
-                                </div>
-                                <!-- Why Choose Item Content End -->
-                            </div>
-                            <!-- Why Choose Item End -->
-
-                            <!-- Why Choose Item Start -->
-                            <div class="why-choose-item wow fadeInUp" data-wow-delay="0.8s">
-                                <!-- Icon Box Start -->
-                                <div class="icon-box">
-                                    <img src="images/icon-why-choose-3.svg" alt="">
-                                </div>
-                                <!-- Icon Box End -->
-
-                                <!-- Why Choose Item Content Start -->
-                                <div class="why-choose-item-content">
-                                    <h3>Client-Centered Collaboration</h3>
-                                    <p>Your input is valued throughout the entire process, ensuring your vision is fully realized.</p>
-                                </div>
-                                <!-- Why Choose Item Content End -->
-                            </div>
-                            <!-- Why Choose Item End -->
-                        </div>
-                        <!-- Why Choose Item List End -->
-                    </div>
-                    <!-- Why Choose Content End -->
-                </div>
-
-                <div class="col-lg-7">
-                    <!-- Why Choose Images Images Start -->
-                    <div class="why-choose-images">
-                        <!-- Why Choose Box 1 Start -->
-                        <div class="why-choose-img-box-1">
-                            <!-- Why Choose img 1 Start -->
-                            <div class="why-choose-img-1">
-                                <figure class="image-anime reveal">
-                                    <img src="images/why-choose-img-1.jpg" alt="">
-                                </figure>
-                            </div>
-                            <!-- Why Choose img 1 End -->
-
-                            <!-- Why Choose img 2 Start -->
-                            <div class="why-choose-img-2">
-                                <figure class="image-anime reveal">
-                                    <img src="images/why-choose-img-2.jpg" alt="">
-                                </figure>
-                            </div>
-                            <!-- Why Choose img 2 End -->
-                        </div>
-                        <!-- Why Choose Box 1 End -->
-
-                        <!-- Why Choose Box 2 Start -->
-                        <div class="why-choose-img-box-2">
-                            <!-- Why Choose img 3 Start -->
-                            <div class="why-choose-img-3">
-                                <figure class="image-anime reveal">
-                                    <img src="images/why-choose-img-3.jpg" alt="">
-                                </figure>
-                            </div>
-                            <!-- Why Choose img 3 End -->
-
-                            <!-- Why Choose img 4 Start -->
-                            <div class="why-choose-img-4">
-                                <figure class="image-anime reveal">
-                                    <img src="images/why-choose-img-4.jpg" alt="">
-                                </figure>
-                            </div>
-                            <!-- Why Choose img 4 End -->
-                        </div>
-                        <!-- Why Choose Box 2 End -->
-                    </div>
-                    <!-- Why Choose Images Images End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Why Choose Us Section End -->
-
-    <!-- Footer Start -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Footer Header Start -->
-                    <div class="footer-header">
-                        <div class="row align-items-center">  
-                            <div class="col-md-6">
-                                <!-- Footer Logo Start -->
-                                <div class="footer-logo">
-                                    <img src="images/logo.webp" alt="" height="200px">
-                                </div>
-                                <!-- Footer Logo End -->
-                            </div>
-
-                            <div class="col-md-6">
-                                <!-- Footer Social Link Start -->
-                                <div class="footer-social-links">
-                                    <div class="footer-social-link-title">
-                                        <h3>follow our social</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="https://www.instagram.com/9mdesignstudio/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- Footer Social Link End -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer Header End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Links Start -->
-                     <div class="footer-links">
-                        <h3>information</h3>
-                        <ul>
-                            <li><a href="about.html">about our company</a></li>
-                            <li><a href="services.html">view our service</a></li>
-                            <li><a href="projects.html">our latest projects</a></li>
-                        </ul>
-                     </div>
-                    <!-- Footer Links End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Links Start -->
-                     <div class="footer-links">
-                        <h3>portfolio</h3>
-                        <ul>
-                            <li><a href="project-nandita.html">luxury 4BHK residence</a></li>
-                            <li><a href="project-urban-retreat.html">modern apartment interiors</a></li>
-                            <li><a href="project-corporate-office.html">commercial office design</a></li>
-                            <li><a href="project-luxurious-loft.html">luxurious loft interiors</a></li>
-                            <li><a href="project-minimalist-haven.html">minimalist home design</a></li>
-                        </ul>
-                     </div>
-                    <!-- Footer Links End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Contact Box Start -->
-                    <div class="footer-contact-box footer-links">
-                        <h3>contact us</h3>
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>+91 8200954409</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>miluvshah@gmail.com</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>Ahmedabad, Gujarat, 380015</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-                    </div>
-                    <!-- Footer Contact Box End -->
-                </div>
-            </div>
-
-            <!-- Footer Copyright Section Start -->
-            <div class="footer-copyright">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Footer Copyright Start -->
-                        <div class="footer-copyright-text">
-                            <p>Copyright © 2025 All Rights Reserved.</p>
-                        </div>
-                        <!-- Footer Copyright End -->
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Copyright Section End -->
-        </div>
-    </footer>
+	<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
     <!-- Footer End -->
 
     <!-- Jquery Library File -->
@@ -562,7 +229,6 @@
     <script src="js/parallaxie.js"></script>
     <!-- MagicCursor js file -->
     <script src="js/gsap.min.js"></script>
-    <script src="js/magiccursor.js"></script>
     <!-- Text Effect js file -->
     <script src="js/SplitText.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
@@ -571,6 +237,7 @@
     <!-- Wow js file -->
     <script src="js/wow.min.js"></script>
     <!-- Main Custom js file -->
+    <script src="js/site.js"></script>
     <script src="js/function.js"></script>
 </body>
 

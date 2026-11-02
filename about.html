@@ -26,13 +26,11 @@
 	<!-- Google Fonts Css-->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 	<!-- Bootstrap Css -->
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<!-- SlickNav Css -->
-	<link href="css/slicknav.min.css" rel="stylesheet">
 	<!-- Swiper Css -->
-	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<!-- Font Awesome Icon Css-->
 	<link href="css/all.min.css" rel="stylesheet" media="screen">
 	<!-- Animated Css -->
@@ -40,579 +38,242 @@
     <!-- Magnific Popup Core Css File -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 	<!-- Mouse Cursor Css File -->
-	<link rel="stylesheet" href="css/mousecursor.css">
 	<!-- Main Custom Css -->
 	<link href="css/custom.css" rel="stylesheet" media="screen">
+	<link href="css/inner.css" rel="stylesheet">
+	<link href="css/components.css" rel="stylesheet">
+	<style>
+	.ab-imgs{position:relative;padding-bottom:60px}
+	.ab-imgs .ab-1{width:72%}
+	.ab-imgs .ab-2{position:absolute;right:0;bottom:0;width:52%;border:8px solid var(--paper)}
+	.ab-badge{position:absolute;left:0;bottom:20px;background:var(--ink);color:var(--paper);padding:20px 24px;max-width:200px}
+	.ab-badge b{display:block;font-family:var(--f-display);font-size:46px;font-weight:500;color:var(--brass);line-height:1}
+	.ab-badge span:last-child{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+	.ab-badge.b2{left:auto;right:6%;top:24px;bottom:auto;background:var(--brass);color:var(--ink)}
+	.ab-badge.b2 b{color:var(--ink)}
+	.ab-people{display:flex;flex-wrap:wrap;gap:30px;margin-top:34px;padding-top:28px;border-top:1px solid var(--line-dark)}
+	.ab-person{display:flex;align-items:center;gap:16px}
+	.ab-person i{width:56px;height:56px;border:1px solid var(--brass);color:var(--brass);display:grid;place-items:center}
+	.ab-person img{width:56px;height:56px;object-fit:cover;border-radius:50%}
+	.ab-person small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+	.ab-person strong{font-family:var(--f-display);font-size:24px;font-weight:500}
+	.ico-img{width:52px;height:52px;margin-bottom:22px;filter:invert(62%) sepia(30%) saturate(500%) hue-rotate(2deg)}
+	.faq details{border-top:1px solid var(--line-dark);padding:20px 0}
+	.faq details:last-child{border-bottom:1px solid var(--line-dark)}
+	.faq summary{cursor:pointer;font-family:var(--f-display);font-size:24px;line-height:1.2;list-style:none;display:flex;gap:14px}
+	.faq summary::-webkit-details-marker{display:none}
+	.faq summary span{color:var(--brass);font-family:var(--f-mono);font-size:13px;padding-top:8px}
+	.faq details p{margin-top:14px;padding-left:34px;opacity:.8}
+	@media(max-width:640px){.ab-imgs .ab-1{width:80%}}
+	</style>
 </head>
-<body>
+<body class="inner">
 
-    <!-- Preloader Start -->
-	<div class="preloader">
-		<div class="loading-container">
-			<div class="loading"></div>
-			<div id="loading-icon"><img src="images/logo.webp" alt=""></div>
-		</div>
-	</div>
-	<!-- Preloader End -->
+<div class="progress" id="progress"></div>
 
-    <!-- Header Start -->
-	<header class="main-header">
-		<div class="header-sticky">
-			<nav class="container">
-				<div class="navbar navbar-expand-lg">
-					<!-- Logo Start -->
-					<a class="navbar-brand" href="index.html">
-						<img src="images/logo.png" alt="9M Design Studio interior design firm logo" height="100px">
-					</a>
-					<!-- Logo End -->
-
-					<!-- Main Menu Start -->
-					<div class="collapse navbar-collapse main-menu">
-                        <div class="nav-menu-wrapper">
-                            <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>                                
-                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
-                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                                <li class="nav-item"><a class="nav-link" href="get-estimate.html">Get Your Estimate</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>                             
-                            </ul>
-                        </div>
-                        <!-- Header Btn Start -->
-                        <div class="header-btn d-inline-flex">
-                            <a href="get-estimate.html" class="btn-default">get your estimate</a>
-                        </div>
-                        <!-- Header Btn End -->
-					</div>
-					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
-				</div>
+	<!-- Header -->
+	<header class="site-header" id="siteHeader">
+		<div class="wrap">
+			<a class="brand-logo" href="index.html" aria-label="9M Design Studio - home">
+				<img src="images/logo.png" alt="9M Design Studio interior design firm logo">
+			</a>
+			<nav class="nav" id="nav" aria-label="Main">
+				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link active" href="about.html">About Us</a>
+				<a class="nav-link" href="services.html">Services</a>
+				<a class="nav-link" href="projects.html">Projects</a>
+				<a class="nav-link" href="get-estimate.html">Get Your Estimate</a>
+				<a class="nav-link" href="contact.html">Contact Us</a>
 			</nav>
-			<div class="responsive-menu"></div>
+			<a href="get-estimate.html" class="btn btn-light header-cta">Get estimate <span class="arr"></span></a>
+			<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
 		</div>
 	</header>
-	<!-- Header End -->
 
-    <!-- Page Header Start -->
-	<div class="page-header parallaxie">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<!-- Page Header Box Start -->
-					<div class="page-header-box">
-						<h1 class="text-anime-style-2" data-cursor="-opaque">About 9M Design Studio</h1>
-						<nav class="wow fadeInUp">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">home</a></li>
-								<li class="breadcrumb-item">> about us</li>
-							</ol>
-						</nav>
+	<!-- Page Hero -->
+	<section class="page-hero has-img" style="background-image:url('images/about-img-1.jpg')">
+		<div class="wrap">
+			<p class="eyebrow">9M Design Studio</p>
+			<h1>About 9M Design Studio</h1>
+			<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">home</a><span class="sep">/</span><span>about us</span></nav>
+		</div>
+	</section>
+
+	<main>
+	<!-- About -->
+	<section class="sec">
+		<div class="wrap split">
+			<div class="ab-imgs rv">
+				<div class="ph r45 ab-1"><img src="images/about-img-1.jpg" alt="Ahmedabad interior design studio project detail"></div>
+				<div class="ph r43 ab-2"><img src="images/about-img-2.jpg" alt="Luxury home interior by 9M Design Studio Ahmedabad"></div>
+				<div class="ab-badge"><b><span class="counter">5</span>+</b><span>Years of experience</span></div>
+				<div class="ab-badge b2"><b><span class="counter">95</span>%</b><span>positive feedback</span></div>
+			</div>
+			<div class="rv">
+				<p class="eyebrow">about us</p>
+				<h2 class="h2">Our passion for design, your <em>vision realized</em></h2>
+				<p class="lead" style="margin-top:22px">We are an Ahmedabad-based interior design studio working closely with homeowners and business owners to create refined, functional spaces with thoughtful attention to detail.</p>
+				<ul class="ticks">
+					<li>creative expertise</li>
+					<li>client-centered approach</li>
+				</ul>
+				<div class="ab-people">
+					<div class="ab-person">
+						<i class="fa-solid fa-phone"></i>
+						<div><small>need any help?</small><strong>+91 8200954409</strong></div>
 					</div>
-					<!-- Page Header Box End -->
+					<div class="ab-person">
+						<img src="images/author-1.jpg" alt="">
+						<div><small>Founder</small><strong>Miloni Mashruwala</strong></div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Page Header End -->
+	</section>
 
-    <!-- About Us Section Start -->
- <div class="about-us">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- About Us Images Start -->
-                    <div class="about-us-images">
-                        <!-- About Image 1 Start -->
-                        <div class="about-img-1">
-                            <figure class="image-anime reveal">
-                                <img src="images/about-img-1.jpg" alt="Ahmedabad interior design studio project detail">
-                            </figure>
-                        </div>
-                        <!-- About Image 1 End -->
+	<!-- Vision & Mission -->
+	<section class="sec dark">
+		<div class="wrap">
+			<div class="sec-head rv">
+				<div>
+					<p class="eyebrow">vision mission</p>
+					<h2 class="h2">A behind the scenes look at <em>our agency</em></h2>
+				</div>
+				<p class="lead">Our portfolio showcases a diverse range of projects, from beautifully crafted residential spaces functional and stylish commercial interiors</p>
+			</div>
+			<div class="grid c2">
+				<div class="card rv">
+					<img class="ico-img" src="images/icon-our-vision.svg" alt="">
+					<h3>our vision</h3>
+					<p>Our vision is to transform lives through thoughtfully designed spaces that inspire how people live, work, and connect. We create interiors that reflect each client’s unique identity, blending comfort, functionality, and beauty. By uniting timeless design with modern innovation, we deliver spaces that are both practical and visually stunning.</p>
+				</div>
+				<div class="card rv">
+					<img class="ico-img" src="images/icon-our-mission.svg" alt="">
+					<h3>our mission</h3>
+					<p>Our mission is to deliver exceptional interior designs that elevate everyday living by prioritizing comfort, functionality, and aesthetics. We craft spaces that are visually appealing and tailored to each client’s unique needs and lifestyle. Guided by design innovation, we ensure every project strikes the perfect balance between style and purpose.</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                        <!-- About Image 2 Start -->
-                        <div class="about-img-2">
-                            <figure class="image-anime reveal">
-                                <img src="images/about-img-2.jpg" alt="Luxury home interior by 9M Design Studio Ahmedabad">
-                            </figure>
+	<!-- Best selling finishes -->
+	<section class="sec alt">
+		<div class="wrap split">
+			<div class="rv">
+				<div class="ph r169" style="margin-bottom:40px"><img src="images/best-selling-img-1.jpg" alt=""></div>
+				<p class="eyebrow">best selling finishes</p>
+				<h2 class="h2">We use materials only from personally <em>verified suppliers</em></h2>
+				<p class="lead" style="margin-top:22px">Gloss, matte wood texture, 200+ colors to choose from. Environmentally friendly materials, all certificates are available.</p>
+			</div>
+			<div class="ph r45 rv"><img src="images/best-selling-img-2.jpg" alt=""></div>
+		</div>
+	</section>
 
-                            <!-- Feedback Counter Start -->
-                            <div class="experience-counter">
-                                <h3><span class="counter">5</span>+</h3>
-                                <p>Years of experience</p>
-                            </div>
-                            <!-- Feedback Counter End -->
-                        </div>
-                        <!-- About Image 2 End -->
-    
-                        <!-- Feedback Counter Start -->
-                        <div class="feedback-counter">
-                            <p><span class="counter">95</span>%</p>
-                            <h3>positive feedback</h3>
-                        </div>
-                        <!-- Feedback Counter End -->
-                    </div>
-                    <!-- About Us Images End -->
-                </div>
+	<!-- How we work -->
+	<section class="sec">
+		<div class="wrap">
+			<div class="sec-head rv">
+				<div>
+					<p class="eyebrow">how we work</p>
+					<h2 class="h2">From concept to completion in <em>our work</em></h2>
+				</div>
+				<p class="lead">Our comprehensive approach guides you through each phase of the design process, from initial brainstorming and conceptualization.</p>
+			</div>
+			<div class="steps rv">
+				<div class="step"><span class="num">01</span><h3>initial consultation</h3><p>We start with a one-on meeting to understand your vision preferences and requirement.</p></div>
+				<div class="step"><span class="num">02</span><h3>design planning</h3><p>This involves selecting materials, and layouts, furnishings, as well as creating 3D renderings.</p></div>
+				<div class="step"><span class="num">03</span><h3>project execution</h3><p>With the design plans in this place, we manage and coordinate all aspects of the projects.</p></div>
+				<div class="step"><span class="num">04</span><h3>final review</h3><p>After completing project we conduct a thorough walkthrough with you to review the space.</p></div>
+			</div>
+		</div>
+	</section>
 
-                <div class="col-lg-6">
-                    <!-- About Us Content Start -->
-                    <div class="about-us-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">about us</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">Our passion for design, your <span>vision realized</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">We are an Ahmedabad-based interior design studio working closely with homeowners and business owners to create refined, functional spaces with thoughtful attention to detail.</p>
-                        </div>
-                        <!-- Section Title End -->
+	<!-- FAQs -->
+	<section class="sec alt">
+		<div class="wrap split top">
+			<div class="rv">
+				<p class="eyebrow">asked question</p>
+				<h2 class="h2">Have your any question look <em>here now</em></h2>
+				<p class="lead" style="margin:22px 0 34px">Our dedicated team works closely to understand your vision and bring it to life with great attention to detail</p>
+				<div class="faq">
+					<details open>
+						<summary><span>1.</span> What is the typical process for starting a design project?</summary>
+						<p>We begin with a consultation to understand your vision, style, and budget, followed by concept development and detailed planning. Once finalized, our team manages execution to bring your dream space to life with attention to detail.</p>
+					</details>
+					<details>
+						<summary><span>2.</span> How long does a typical interior design project take?</summary>
+						<p>Project timelines vary depending on scope, but most interior design projects take anywhere from 4 to 12 weeks. We provide a clear schedule after the initial consultation.</p>
+					</details>
+					<details>
+						<summary><span>3.</span> Can I incorporate my existing furniture into the new design?</summary>
+						<p>Yes, we can seamlessly blend your existing furniture into the new design. Our goal is to create a fresh look while preserving pieces you love.</p>
+					</details>
+					<details>
+						<summary><span>4.</span> What should I expect during the design consultation?</summary>
+						<p>During the consultation, we discuss your style, needs, and budget while exploring ideas for your space. This helps us create a clear vision and roadmap for your project.</p>
+					</details>
+				</div>
+			</div>
+			<div class="ph r45 rv"><img src="images/faqs-image.jpg" alt=""></div>
+		</div>
+	</section>
 
-                        <!-- About Us Content Body Start -->
-                        <div class="about-us-content-body">
-                            <!-- About Content Info Start -->
-                            <div class="about-us-content-info">
-                                <!-- About Us Content List Start -->
-                                <div class="about-us-content-list wow fadeInUp" data-wow-delay="0.4s">
-                                    <ul>
-                                        <li>creative expertise</li>
-                                        <li>client-centered approach</li>
-                                    </ul>
-                                </div>
-                                <!-- About Us Content List End -->
+	<!-- CTA -->
+	<section class="sec dark cta-band">
+		<div class="wrap rv">
+			<p class="eyebrow">Let&rsquo;s build something</p>
+			<h2 class="h2">Ready to design your <em>space?</em></h2>
+			<div class="cta-btns">
+				<a href="get-estimate.html" class="btn btn-solid">Get your estimate <span class="arr"></span></a>
+				<a href="contact.html" class="btn btn-light">Contact us <span class="arr"></span></a>
+			</div>
+		</div>
+	</section>
+	</main>
 
-                             
-                            </div>
-                            <!-- About Content Info End -->
+	<!-- ============ FOOTER ============ -->
+	<footer class="footer">
+		<div class="wrap">
+			<div class="footer-grid">
+				<div>
+					<a class="brand-logo" href="index.html" aria-label="9M Design Studio"><img src="images/logo.png" alt="9M Design Studio Ahmedabad luxury interior designer"></a>
+					<p>Ahmedabad-based luxury interior design for homes, offices and commercial spaces.</p>
+					<div class="social"><a href="https://www.instagram.com/9mdesignstudio/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div>
+				</div>
+				<div>
+					<h4>Information</h4>
+					<ul>
+						<li><a href="about.html">About our company</a></li>
+						<li><a href="services.html">View our services</a></li>
+						<li><a href="projects.html">Our latest projects</a></li>
+						<li><a href="get-estimate.html">Get your estimate</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4>Portfolio</h4>
+					<ul>
+						<li><a href="project-nandita.html">Luxury 4BHK residence</a></li>
+						<li><a href="project-girdharnagar-bunglow.html">5BHK ultra luxurious bunglow</a></li>
+						<li><a href="project-urban-retreat.html">Modern apartment interiors</a></li>
+						<li><a href="project-corporate-office.html">Commercial office design</a></li>
+						<li><a href="project-luxurious-loft.html">Luxurious loft interiors</a></li>
+						<li><a href="project-minimalist-haven.html">Minimalist home design</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4>Contact us</h4>
+					<ul>
+						<li class="ci"><i class="fa-solid fa-phone"></i><a href="tel:+918200954409">+91 8200954409</a></li>
+						<li class="ci"><i class="fa-solid fa-envelope"></i><a href="mailto:miluvshah@gmail.com">miluvshah@gmail.com</a></li>
+						<li class="ci"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, Gujarat, 380015</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom"><span>Copyright © 2025 All Rights Reserved.</span><span>9M Design Studio · Ahmedabad</span></div>
+		</div>
+	</footer>
 
-                            <!-- About Content List Start -->
-                            <div class="about-us-contact-list">
-                                <!-- About Contact Item Start -->
-                                <div class="about-contact-item wow fadeInUp" data-wow-delay="0.4s">
-                                    <div class="icon-box">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </div>
-                                    <div class="about-contact-content">
-                                        <p>need any help?</p>
-                                        <h3>+91 8200954409</h3>
-                                    </div>
-                                </div>
-                                <!-- About Contact Item End -->
-
-                                <!-- About Contact Item Start -->
-                                <div class="about-contact-item wow fadeInUp" data-wow-delay="0.6s">
-                                    <div class="icon-box">
-                                        <figure class="image-anime">
-                                            <img src="images/author-1.jpg" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="about-contact-content">
-                                        <h3>Miloni Mashruwala</h3>
-                                        <p>Founder</p>
-                                    </div>
-                                </div>
-                                <!-- About Contact Item End -->
-                            </div>
-                            <!-- About Content Info End -->
-                        </div>
-                        <!-- About Us Content Body End -->
-                    </div>
-                    <!-- About Us Content End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About Us Section End -->
-
-    <!-- Vision Mission Start -->
-    <div class="vision-mission">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title dark-section">
-                        <h3 class="wow fadeInUp">vision mission</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">A behind the scenes look at <span>our agency</span></h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Title Content Start -->
-                    <div class="section-title-content dark-section">
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">Our portfolio showcases a diverse range of projects, from beautifully crafted residential spaces functional and stylish commercial interiors</p>
-                    </div>
-                    <!-- Section Title Content End -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Vision Mission Box Start -->
-                    <div class="vision-mission-box">
-                        <!-- Vision Mission Item Start -->
-                        <div class="vision-mission-item wow fadeInUp">
-                            <div class="icon-box">
-                                <img src="images/icon-our-vision.svg" alt="">
-                            </div>
-                            <div class="vision-mission-content">
-                                <h3>our vision</h3>
-                                <p>Our vision is to transform lives through thoughtfully designed spaces that inspire how people live, work, and connect. We create interiors that reflect each client’s unique identity, blending comfort, functionality, and beauty. By uniting timeless design with modern innovation, we deliver spaces that are both practical and visually stunning.</p>
-                            </div>
-                        </div>
-                        <!-- Vision Mission Item End -->
-    
-                        <!-- Vision Mission Item Start -->
-                        <div class="vision-mission-item wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="icon-box">
-                                <img src="images/icon-our-mission.svg" alt="">
-                            </div>
-                            <div class="vision-mission-content">
-                                <h3>our mission</h3>
-                                <p>Our mission is to deliver exceptional interior designs that elevate everyday living by prioritizing comfort, functionality, and aesthetics. We craft spaces that are visually appealing and tailored to each client’s unique needs and lifestyle. Guided by design innovation, we ensure every project strikes the perfect balance between style and purpose.</p>
-                            </div>
-                        </div>
-                        <!-- Vision Mission Item End -->
-                    </div>
-                    <!-- Vision Mission Box End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Vision Mission End -->
-
-    <!-- Best Seeling Start -->
-     <div class="best-selling">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Best Seeling Content Start -->
-                    <div class="best-selling-content">
-                        <!-- Best Seeling Content Image Start -->
-                        <div class="best-selling-content-img">
-                            <figure class="image-anime reveal">
-                                <img src="images/best-selling-img-1.jpg" alt="">
-                            </figure>
-                        </div>
-                        <!-- Best Seeling Content Image End -->
-
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">best selling finishes</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">We use materials only from personally <span>verified suppliers</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Gloss, matte wood texture, 200+ colors to choose from. Environmentally friendly materials, all certificates are available.</p>
-                        </div>
-                        <!-- Section Title End -->
-                    </div>
-                    <!-- Best Seeling Content End -->
-                </div>
-                <div class="col-lg-6">
-                    <!-- Best Seeling Image Start -->
-                    <div class="best-selling-iamge">
-                        <figure class="image-anime reveal">
-                            <img src="images/best-selling-img-2.jpg" alt="">
-                        </figure>
-                    </div>
-                    <!-- Best Seeling Image End -->
-                </div>
-            </div>
-        </div>
-     </div>
-    <!-- Best Seeling End -->
-
-    <!-- How We Work Start -->
-    <div class="how-we-work">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title dark-section">
-                        <h3 class="wow fadeInUp">how we work</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">From concept to completion in<span> our work</span></h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Title Content Start -->
-                    <div class="section-title-content dark-section">
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">Our comprehensive approach guides you through each phase of the design process, from initial brainstorming and conceptualization.</p>
-                    </div>
-                    <!-- Section Title Content End -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- How We Work List Start -->
-                    <div class="how-we-work-list">
-                        <!-- How We Item Start -->
-                        <div class="how-we-work-item wow fadeInUp">
-                            <div class="icon-box">
-                                <img src="images/icon-how-we-work-1.svg" alt="">
-                            </div>
-                            <div class="how-we-work-content">
-                                <h3>01. initial consultation</h3>
-                                <p>We start with a one-on meeting to understand your vision preferences and requirement.</p>
-                            </div>
-                        </div>
-                        <!-- How We Item End -->
-
-                        <!-- How We Item Start -->
-                        <div class="how-we-work-item wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="icon-box">
-                                <img src="images/icon-how-we-work-2.svg" alt="">
-                            </div>
-                            <div class="how-we-work-content">
-                                <h3>02. design planning</h3>
-                                <p>This involves selecting materials, and layouts, furnishings, as well as creating 3D renderings.</p>
-                            </div>
-                        </div>
-                        <!-- How We Item End -->
-
-                        <!-- How We Item Start -->
-                        <div class="how-we-work-item wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="icon-box">
-                                <img src="images/icon-how-we-work-3.svg" alt="">
-                            </div>
-                            <div class="how-we-work-content">
-                                <h3>03. project execution</h3>
-                                <p>With the design plans in this place, we manage and coordinate all aspects of the projects.</p>
-                            </div>
-                        </div>
-                        <!-- How We Item End -->
-
-                        <!-- How We Item Start -->
-                        <div class="how-we-work-item wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="icon-box">
-                                <img src="images/icon-how-we-work-4.svg" alt="">
-                            </div>
-                            <div class="how-we-work-content">
-                                <h3>04. final review</h3>
-                                <p>After completing project we conduct a thorough walkthrough with you to review the space.</p>
-                            </div>
-                        </div>
-                        <!-- How We Item End -->
-                    </div>
-                    <!-- How We Work List End -->
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- How We Work End -->
-
-    <!-- Our Faqs Stat -->
-    <div class="our-faqs">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <!-- Our Faq Content Start -->
-                    <div class="our-faqs-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">asked question</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">Have your any question look <span>here now</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Our dedicated team works closely to understand your vision and bring it to life with great attention to detail</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- FAQ Accordion Start -->
-                        <div class="faq-accordion" id="accordion">
-                            <!-- FAQ Item Start -->
-                            <div class="accordion-item wow fadeInUp">
-                                <h2 class="accordion-header" id="heading1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                        <span>1.</span>  What is the typical process for starting a design project?
-                                    </button>
-                                </h2>
-                                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>We begin with a consultation to understand your vision, style, and budget, followed by concept development and detailed planning. Once finalized, our team manages execution to bring your dream space to life with attention to detail.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FAQ Item End -->
-
-                            <!-- FAQ Item Start -->
-                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
-                                <h2 class="accordion-header" id="heading2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                        <span>2.</span>  How long does a typical interior design project take?
-                                    </button>
-                                </h2>
-                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Project timelines vary depending on scope, but most interior design projects take anywhere from 4 to 12 weeks. We provide a clear schedule after the initial consultation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FAQ Item End -->
-
-                            <!-- FAQ Item Start -->
-                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
-                                <h2 class="accordion-header" id="heading3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                        <span>3.</span>  Can I incorporate my existing furniture into the new design?
-                                    </button>
-                                </h2>
-                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Yes, we can seamlessly blend your existing furniture into the new design. Our goal is to create a fresh look while preserving pieces you love.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FAQ Item End -->
-
-                            <!-- FAQ Item Start -->
-                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
-                                <h2 class="accordion-header" id="heading4">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        <span>4.</span>  What should I expect during the design consultation?
-                                    </button>
-                                </h2>
-                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>During the consultation, we discuss your style, needs, and budget while exploring ideas for your space. This helps us create a clear vision and roadmap for your project.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FAQ Item End -->
-                        </div>
-                        <!-- FAQ Accordion End -->
-                    </div>
-                    <!-- Our Faq Content End -->
-                </div>
-
-                <div class="col-lg-5">
-                    <!-- Our Faq Image Start -->
-                    <div class="our-faqs-image">
-                        <figure class="image-anime reveal">
-                            <img src="images/faqs-image.jpg" alt="">
-                        </figure>
-                    </div>
-                    <!-- Our Faq Image End -->
-                </div>
-            </div>
-        </div>
-     </div>
-    <!-- Our Faqs End -->
-
-    <!-- Footer Start -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Footer Header Start -->
-                    <div class="footer-header">
-                        <div class="row align-items-center">  
-                            <div class="col-md-6">
-                                <!-- Footer Logo Start -->
-                                <div class="footer-logo">
-                                    <img src="images/logo.webp" alt="" height="200px">
-                                </div>
-                                <!-- Footer Logo End -->
-                            </div>
-
-                            <div class="col-md-6">
-                                <!-- Footer Social Link Start -->
-                                <div class="footer-social-links">
-                                    <div class="footer-social-link-title">
-                                        <h3>follow our social</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="https://www.instagram.com/9mdesignstudio/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- Footer Social Link End -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer Header End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Links Start -->
-                     <div class="footer-links">
-                        <h3>information</h3>
-                        <ul>
-                            <li><a href="about.html">about our company</a></li>
-                            <li><a href="services.html">view our service</a></li>
-                            <li><a href="projects.html">our latest projects</a></li>
-                        </ul>
-                     </div>
-                    <!-- Footer Links End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Links Start -->
-                     <div class="footer-links">
-                        <h3>portfolio</h3>
-                        <ul>
-                            <li><a href="project-nandita.html">luxury 4BHK residence</a></li>
-                            <li><a href="project-urban-retreat.html">modern apartment interiors</a></li>
-                            <li><a href="project-corporate-office.html">commercial office design</a></li>
-                            <li><a href="project-luxurious-loft.html">luxurious loft interiors</a></li>
-                            <li><a href="project-minimalist-haven.html">minimalist home design</a></li>
-                        </ul>
-                     </div>
-                    <!-- Footer Links End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Footer Contact Box Start -->
-                    <div class="footer-contact-box footer-links">
-                        <h3>contact us</h3>
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>+91 8200954409</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>miluvshah@gmail.com</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-
-                        <!-- Footer Contact Item Start -->
-                        <div class="footer-contact-item">
-                            <div class="icon-box">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="footer-contact-content">
-                                <p>Ahmedabad, Gujarat, 380015</p>
-                            </div>
-                        </div>
-                        <!-- Footer Contact Item End -->
-                    </div>
-                    <!-- Footer Contact Box End -->
-                </div>
-            </div>
-
-            <!-- Footer Copyright Section Start -->
-            <div class="footer-copyright">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Footer Copyright Start -->
-                        <div class="footer-copyright-text">
-                            <p>Copyright © 2025 All Rights Reserved.</p>
-                        </div>
-                        <!-- Footer Copyright End -->
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Copyright Section End -->
-        </div>
-    </footer>
+	<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
     <!-- Footer End -->
 
     <!-- Jquery Library File -->
@@ -638,7 +299,6 @@
     <script src="js/parallaxie.js"></script>
     <!-- MagicCursor js file -->
     <script src="js/gsap.min.js"></script>
-    <script src="js/magiccursor.js"></script>
     <!-- Text Effect js file -->
     <script src="js/SplitText.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
@@ -647,6 +307,7 @@
     <!-- Wow js file -->
     <script src="js/wow.min.js"></script>
     <!-- Main Custom js file -->
+    <script src="js/site.js"></script>
     <script src="js/function.js"></script>
 </body>
 
