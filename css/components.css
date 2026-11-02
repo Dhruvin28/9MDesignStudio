@@ -91,3 +91,4 @@ body.inner main { display: block; }
 @media (max-width: 1100px) { .grid.c4 { grid-template-columns: repeat(2, 1fr); } .steps { grid-template-columns: repeat(2, 1fr); } .step:nth-child(2) { border-right: 0; margin-right: 0; } }
 @media (max-width: 991px) { .sec-head, .split { grid-template-columns: 1fr; } .split.rev > :first-child { order: 0; } .grid.c3 { grid-template-columns: repeat(2, 1fr); } .gallery .ph, .gallery .ph.wide { grid-column: span 6; } }
 @media (max-width: 640px) { .grid.c2, .grid.c3, .grid.c4, .steps { grid-template-columns: 1fr; } .step { border-right: 0; margin-right: 0; } .fm .row2 { grid-template-columns: 1fr; } .gallery .ph, .gallery .ph.wide, .gallery .ph.half { grid-column: span 12; } }
+.sec a:not([class]) { color: var(--brass); text-decoration: none; } .sec a:not([class]):hover { text-decoration: underline; }
